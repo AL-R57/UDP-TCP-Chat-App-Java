@@ -1,4 +1,4 @@
-%% Create a UDP/TCP Chat App with Java sockets
+Create a UDP/TCP Chat App with Java sockets
 
 
 
