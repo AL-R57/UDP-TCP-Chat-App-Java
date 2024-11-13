@@ -8,7 +8,7 @@ import java.net.InetAddress;
 public class UDPClient {
     private String state;
     private int port;
-    public static int DEFAULT_PORT = 4038; //verify with "sudo netstat -tuln"
+    public static int DEFAULT_PORT = 8080; //verify with "sudo netstat -tuln"
     public static int MAX_PACKET_SIZE = 1500; //MTU value for ethernet
 
     public UDPClient(int serv_listening_port) {
