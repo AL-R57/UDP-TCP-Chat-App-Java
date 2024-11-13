@@ -16,3 +16,10 @@ UDP server test
 
 
 ![image](https://github.com/user-attachments/assets/607fd557-8dd3-46a4-8203-6a1eb4791210)
+
+tests:
+![image](https://github.com/user-attachments/assets/b21a319e-7ba2-4b4b-8473-ac9199dd307c)
+
+
+![image](https://github.com/user-attachments/assets/611e2191-08bd-4ef2-bbac-65f9891150d5)
+
