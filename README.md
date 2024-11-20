@@ -25,3 +25,11 @@ tests:
 
 
 modèle MVC
+
+
+todo:
+
+-test codes
+-read javadoc
+-derniere question
+-MTU
