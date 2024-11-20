@@ -1,7 +1,6 @@
 package TCP;
 
-import java.io.Console;
-import java.io.IOException;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -39,11 +38,16 @@ public class TCPClient {
                     data_to_send = new byte[MAX_PACKET_SIZE];
                     System.arraycopy(userInput.getBytes("UTF-8"), 0, data_to_send, 0, MAX_PACKET_SIZE);
                 }
-                clientSocket;
 
-
-
+                InputStream data_server = clientSocket.getInputStream();
+                OutputStream data_client = clientSocket.getOutputStream();
+                BufferedInputStream in = new BufferedInputStream(data_server);
+                PrintWriter out = new PrintWriter(data_client);
                 System.out.println("Message sent to " + serverAddress + ":" + serverPort);
+                //while connection établi lecture écriture
+                System.out.println("Received from "+serverAddress+":"+serverPort+" - "+in+"\n");
+                out.println();
+
             }
         } catch (IOException e) {
             System.err.println("Error in UDP Client: " + e.getMessage());
