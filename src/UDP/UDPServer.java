@@ -59,7 +59,6 @@ public class UDPServer {
         } else{
             server_port = Integer.parseInt(args[0]);
         }
-
         UDPServer udpServer = new UDPServer(server_port);
         udpServer.launch();
     }

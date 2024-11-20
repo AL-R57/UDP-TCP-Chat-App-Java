@@ -19,10 +19,10 @@ public class UDPClient {
         try (DatagramSocket clientSocket = new DatagramSocket()) {
             Console console = System.console();
             if (console == null) {
-                System.err.println("No console available. Make sure to run in a console environment.");
+                System.err.println("No console available.");
                 return;
             }
-            System.out.println("Type your message and press Enter to send (type 'exit' to quit):");
+            System.out.println("What is your message? Press Enter to send ('exit' to quit):");
             while (true) {
                 String userInput = console.readLine();
 
@@ -32,7 +32,7 @@ public class UDPClient {
                 }
                 byte[] dataToSend = userInput.getBytes("UTF-8");
                 if (dataToSend.length > MAX_PACKET_SIZE) {
-                    System.out.println("Message too long. It has been truncated to "+MAX_PACKET_SIZE+" bytes.");
+                    System.out.println("Message is too long. It has been truncated to "+MAX_PACKET_SIZE+" bytes.");
                     dataToSend = new byte[MAX_PACKET_SIZE];
                     System.arraycopy(userInput.getBytes("UTF-8"), 0, dataToSend, 0, MAX_PACKET_SIZE);
                 }
