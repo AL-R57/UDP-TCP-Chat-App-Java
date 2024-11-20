@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="448af90b-b369-42ff-be1d-5440b317dc1b" name="Changes" comment="update TCP">
-      <change beforePath="$PROJECT_DIR$/src/TCP/TCPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TCP/TCPClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TCP/TCPServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TCP/TCPServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +125,7 @@
       <workItem from="1731504670605" duration="2261000" />
       <workItem from="1731509765667" duration="5186000" />
       <workItem from="1732106099581" duration="4197000" />
-      <workItem from="1732115303310" duration="1680000" />
+      <workItem from="1732115303310" duration="2344000" />
     </task>
     <task id="LOCAL-00001" summary="add UDPServer">
       <option name="closed" value="true" />
@@ -223,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732116358397</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="update TCP">
+      <option name="closed" value="true" />
+      <created>1732118101237</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1732118101237</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

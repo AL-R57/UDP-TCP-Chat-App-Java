@@ -9,7 +9,6 @@ public class TCPServer {
     private String state;
     private int port;
     public static int DEFAULT_PORT = 8080;
-    private static final int MAX_PACKET_SIZE = 1500;
 
     public TCPServer(int serv_listening_port) {
         this.port = serv_listening_port;
@@ -27,6 +26,7 @@ public class TCPServer {
             serverSocket = new ServerSocket(port);
             while(true) {
                 Socket socket = serverSocket.accept();
+
                 InetAddress clientAddress = socket.getInetAddress();
                 int clientPort = socket.getPort();
 
@@ -34,8 +34,10 @@ public class TCPServer {
                 OutputStream data_client = socket.getOutputStream();
                 BufferedInputStream in = new BufferedInputStream(data_server);
                 PrintWriter out = new PrintWriter(data_client);
+                //while connection établi lecture écriture
                 System.out.println("Received from "+clientAddress+":"+clientPort+" - "+data_server+"\n");
                 out.println("echo"+in);
+                //
             }
         } catch (IOException e) {
             System.err.println("Error in TCP Client: " + e.getMessage());

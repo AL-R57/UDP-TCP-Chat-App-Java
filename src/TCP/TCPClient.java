@@ -4,6 +4,7 @@ import java.io.Console;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
+import java.net.Socket;
 
 public class TCPClient {
     private String serverAddress;
@@ -14,8 +15,12 @@ public class TCPClient {
         this.serverAddress = serverAddress;
         this.serverPort = serverPort;
     }
+
+    /**
+     * javadoc for start function
+     */
     public void start() {
-        try (ServerSocket clientSocket = new ServerSocket()) {
+        try (Socket clientSocket = new Socket(serverAddress,serverPort)) {
             Console console = System.console();
             if (console == null) {
                 System.err.println("No console available.");
@@ -24,7 +29,6 @@ public class TCPClient {
             System.out.println("What is your message? Press Enter to send ('exit' to quit):");
             while (true) {
                 String userInput = console.readLine();
-
                 if ("exit".equalsIgnoreCase(userInput)) {
                     System.out.println("Exiting client.");
                     break;
@@ -35,9 +39,10 @@ public class TCPClient {
                     data_to_send = new byte[MAX_PACKET_SIZE];
                     System.arraycopy(userInput.getBytes("UTF-8"), 0, data_to_send, 0, MAX_PACKET_SIZE);
                 }
-                InetAddress serverInetAddress = InetAddress.getByName(serverAddress);
-                DatagramPacket packet = new DatagramPacket(data_to_send, data_to_send.length, serverInetAddress, serverPort);
-                clientSocket.send(packet);
+                clientSocket;
+
+
+
                 System.out.println("Message sent to " + serverAddress + ":" + serverPort);
             }
         } catch (IOException e) {
