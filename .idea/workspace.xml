@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448af90b-b369-42ff-be1d-5440b317dc1b" name="Changes" comment="add UDPClient" />
+    <list default="true" id="448af90b-b369-42ff-be1d-5440b317dc1b" name="Changes" comment="add UDPClient rm main" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -122,7 +122,7 @@
       <workItem from="1731503685488" duration="22000" />
       <workItem from="1731504670605" duration="2261000" />
       <workItem from="1731509765667" duration="5186000" />
-      <workItem from="1732106099581" duration="698000" />
+      <workItem from="1732106099581" duration="1070000" />
     </task>
     <task id="LOCAL-00001" summary="add UDPServer">
       <option name="closed" value="true" />
@@ -180,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732106650037</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add UDPClient rm main">
+      <option name="closed" value="true" />
+      <created>1732107157526</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1732107157526</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +197,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add UDPServer" />
     <MESSAGE value="add UDPClient" />
-    <option name="LAST_COMMIT_MESSAGE" value="add UDPClient" />
+    <MESSAGE value="add UDPClient rm main" />
+    <option name="LAST_COMMIT_MESSAGE" value="add UDPClient rm main" />
   </component>
 </project>
