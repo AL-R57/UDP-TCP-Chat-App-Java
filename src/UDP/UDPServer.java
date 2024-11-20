@@ -20,7 +20,7 @@ public class UDPServer {
         this.state = "Open";
     }
 
-    public void lauch() throws IOException {
+    public void launch() throws IOException {
         DatagramSocket serverSocket = null;
         try {
             this.state = "Running";
@@ -62,7 +62,7 @@ public class UDPServer {
 
         UDPServer udpServer = new UDPServer(server_port);
         udpServer.toString();
-        udpServer.lauch();
+        udpServer.launch();
     }
 }
 

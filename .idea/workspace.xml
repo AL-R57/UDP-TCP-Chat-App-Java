@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448af90b-b369-42ff-be1d-5440b317dc1b" name="Changes" comment="add UDPServer" />
+    <list default="true" id="448af90b-b369-42ff-be1d-5440b317dc1b" name="Changes" comment="add UDPServer">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UDP/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UDP/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UDP/UDPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UDP/UDPClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UDP/UDPServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UDP/UDPServer.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +49,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.UDPClient.executor&quot;: &quot;Run&quot;,
     &quot;Application.UDPServer.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
@@ -57,6 +63,46 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunManager" selected="Application.UDPServer">
+    <configuration name="UDPClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="UDP.UDPClient" />
+      <module name="UDP-TCP-Chat-App" />
+      <option name="PROGRAM_PARAMETERS" value="10000 localhost" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="UDP.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UDPServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="UDP.UDPServer" />
+      <module name="UDP-TCP-Chat-App" />
+      <option name="PROGRAM_PARAMETERS" value="10000" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="UDP.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.UDPServer" />
+      <item itemvalue="Application.UDPClient" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.UDPServer" />
+        <item itemvalue="Application.UDPClient" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -80,6 +126,8 @@
       <workItem from="1731503501922" duration="120000" />
       <workItem from="1731503685488" duration="22000" />
       <workItem from="1731504670605" duration="2261000" />
+      <workItem from="1731509765667" duration="5186000" />
+      <workItem from="1732106099581" duration="320000" />
     </task>
     <task id="LOCAL-00001" summary="add UDPServer">
       <option name="closed" value="true" />
@@ -113,7 +161,23 @@
       <option name="project" value="LOCAL" />
       <updated>1731506875751</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add UDPServer">
+      <option name="closed" value="true" />
+      <created>1731509783251</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1731509783251</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add UDPServer">
+      <option name="closed" value="true" />
+      <created>1731510117459</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1731510117459</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

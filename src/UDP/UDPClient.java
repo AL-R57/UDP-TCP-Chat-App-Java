@@ -1,68 +1,59 @@
 package UDP;
 
+import java.io.Console;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 public class UDPClient {
-    private String state;
-    private int port;
-    public static int DEFAULT_PORT = 8080; //verify with "sudo netstat -tuln"
-    public static int MAX_PACKET_SIZE = 1500; //MTU value for ethernet
+    private String serverAddress;
+    private int serverPort;
+    private static final int MAX_PACKET_SIZE = 1500; //MTU value for ethernet
 
-    public UDPClient(int serv_listening_port) {
-        this.port = serv_listening_port;
-        this.state = "Open";
+    public UDPClient(String serverAddress, int serverPort) {
+        this.serverAddress = serverAddress;
+        this.serverPort = serverPort;
     }
-    public UDPClient() {
-        this.port = DEFAULT_PORT;
-        this.state = "Open";
-    }
-
-    public void lauch() throws IOException {
-        DatagramSocket serverSocket = null;
-        try {
-            this.state = "Running";
-            serverSocket = new DatagramSocket(port);
-            byte[] buf = new byte[MAX_PACKET_SIZE];
-            while(true) {
-                DatagramPacket datagramPacket = new DatagramPacket(buf, MAX_PACKET_SIZE);
-                serverSocket.receive(datagramPacket);
-
-                InetAddress clientAddress = datagramPacket.getAddress();
-                int clientPort = datagramPacket.getPort();
-
-                String data_received = new String(datagramPacket.getData(), 0, datagramPacket.getLength(), "UTF-8");
-                System.out.println("Received from "+clientAddress+":"+clientPort+" - "+data_received);
+    public void launch() {
+        try (DatagramSocket clientSocket = new DatagramSocket()) {
+            Console console = System.console();
+            if (console == null) {
+                System.err.println("No console available. Make sure to run in a console environment.");
+                return;
             }
-        } finally {
-            if(serverSocket != null && !serverSocket.isClosed()){
-                serverSocket.close();
-                this.state = "Close";
+            System.out.println("Type your message and press Enter to send (type 'exit' to quit):");
+            while (true) {
+                String userInput = console.readLine();
+
+                if ("exit".equalsIgnoreCase(userInput)) {
+                    System.out.println("Exiting client.");
+                    break;
+                }
+                byte[] dataToSend = userInput.getBytes("UTF-8");
+                if (dataToSend.length > MAX_PACKET_SIZE) {
+                    System.out.println("Message too long. It has been truncated to "+MAX_PACKET_SIZE+" bytes.");
+                    dataToSend = new byte[MAX_PACKET_SIZE];
+                    System.arraycopy(userInput.getBytes("UTF-8"), 0, dataToSend, 0, MAX_PACKET_SIZE);
+                }
+                InetAddress serverInetAddress = InetAddress.getByName(serverAddress);
+                DatagramPacket packet = new DatagramPacket(dataToSend, dataToSend.length, serverInetAddress, serverPort);
+                clientSocket.send(packet);
+                System.out.println("Message sent to " + serverAddress + ":" + serverPort);
             }
+        } catch (IOException e) {
+            System.err.println("Error in UDP Client: " + e.getMessage());
         }
     }
-
-    @Override
-    public String toString() {
-        return "UDPServer{" +
-                "state='" + state + '\'' +
-                ", port=" + port +
-                '}';
-    }
-    public static void main(String[] args) throws IOException {
-
-        int server_port;
-        if (args.length < 1) {
-            server_port = UDPClient.DEFAULT_PORT;
-        } else{
-            server_port = Integer.parseInt(args[0]);
+    public static void main(String[] args) {
+        if (args.length < 2) {
+            System.err.println("Usage: java UDPClient <server-address> <server-port>");
+            return;
         }
-
-        UDPClient udpServer = new UDPClient(server_port);
-        udpServer.toString();
-        udpServer.lauch();
+        String serverAddress = args[0];
+        int serverPort = Integer.parseInt(args[1]);
+        UDPClient client = new UDPClient(serverAddress, serverPort);
+        client.launch();
     }
 }
 
