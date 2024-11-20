@@ -15,7 +15,7 @@ public class UDPClient {
         this.serverAddress = serverAddress;
         this.serverPort = serverPort;
     }
-    public void launch() {
+    public void start() {
         try (DatagramSocket clientSocket = new DatagramSocket()) {
             Console console = System.console();
             if (console == null) {
@@ -53,7 +53,7 @@ public class UDPClient {
         String serverAddress = args[0];
         int serverPort = Integer.parseInt(args[1]);
         UDPClient client = new UDPClient(serverAddress, serverPort);
-        client.launch();
+        client.start();
     }
 }
 
