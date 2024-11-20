@@ -56,9 +56,3 @@ public class UDPClient {
         client.start();
     }
 }
-
-
-//use "netstat -latupn"
-
-
-

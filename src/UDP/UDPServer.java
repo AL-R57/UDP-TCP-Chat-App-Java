@@ -34,7 +34,7 @@ public class UDPServer {
                 int clientPort = datagramPacket.getPort();
 
                 String data_received = new String(datagramPacket.getData(), 0, datagramPacket.getLength(), "UTF-8");
-                System.out.println("Received from "+clientAddress+":"+clientPort+" - "+data_received);
+                System.out.println("Received from "+clientAddress+":"+clientPort+" - "+data_received+"\n");
             }
         } finally {
             if(serverSocket != null && !serverSocket.isClosed()){
@@ -61,13 +61,6 @@ public class UDPServer {
         }
 
         UDPServer udpServer = new UDPServer(server_port);
-        udpServer.toString();
         udpServer.launch();
     }
 }
-
-
-//use "netstat -latupn"
-
-
-
