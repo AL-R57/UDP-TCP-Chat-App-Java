@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448af90b-b369-42ff-be1d-5440b317dc1b" name="Changes" comment="add UDPClient rm main">
-      <change afterPath="$PROJECT_DIR$/src/TCP/TCPClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TCP/TCPServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TCP/TCPServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UDP/UDPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UDP/UDPClient.java" afterDir="false" />
+    <list default="true" id="448af90b-b369-42ff-be1d-5440b317dc1b" name="Changes" comment="update TCP">
+      <change beforePath="$PROJECT_DIR$/src/TCP/TCPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TCP/TCPClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +125,7 @@
       <workItem from="1731504670605" duration="2261000" />
       <workItem from="1731509765667" duration="5186000" />
       <workItem from="1732106099581" duration="4197000" />
-      <workItem from="1732115303310" duration="1001000" />
+      <workItem from="1732115303310" duration="1680000" />
     </task>
     <task id="LOCAL-00001" summary="add UDPServer">
       <option name="closed" value="true" />
@@ -218,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732107755952</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="update TCP">
+      <option name="closed" value="true" />
+      <created>1732116358397</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1732116358397</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,6 +233,7 @@
     <MESSAGE value="add UDPServer" />
     <MESSAGE value="add UDPClient" />
     <MESSAGE value="add UDPClient rm main" />
-    <option name="LAST_COMMIT_MESSAGE" value="add UDPClient rm main" />
+    <MESSAGE value="update TCP" />
+    <option name="LAST_COMMIT_MESSAGE" value="update TCP" />
   </component>
 </project>

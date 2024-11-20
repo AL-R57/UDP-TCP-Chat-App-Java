@@ -30,14 +30,14 @@ public class UDPClient {
                     System.out.println("Exiting client.");
                     break;
                 }
-                byte[] dataToSend = userInput.getBytes("UTF-8");
-                if (dataToSend.length > MAX_PACKET_SIZE) {
+                byte[] data_to_send = userInput.getBytes("UTF-8");
+                if (data_to_send.length > MAX_PACKET_SIZE) {
                     System.out.println("Message is too long. It has been truncated to "+MAX_PACKET_SIZE+" bytes.");
-                    dataToSend = new byte[MAX_PACKET_SIZE];
-                    System.arraycopy(userInput.getBytes("UTF-8"), 0, dataToSend, 0, MAX_PACKET_SIZE);
+                    data_to_send = new byte[MAX_PACKET_SIZE];
+                    System.arraycopy(userInput.getBytes("UTF-8"), 0, data_to_send, 0, MAX_PACKET_SIZE);
                 }
                 InetAddress serverInetAddress = InetAddress.getByName(serverAddress);
-                DatagramPacket packet = new DatagramPacket(dataToSend, dataToSend.length, serverInetAddress, serverPort);
+                DatagramPacket packet = new DatagramPacket(data_to_send, data_to_send.length, serverInetAddress, serverPort);
                 clientSocket.send(packet);
                 System.out.println("Message sent to " + serverAddress + ":" + serverPort);
             }
