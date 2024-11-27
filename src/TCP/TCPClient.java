@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Arrays;
 
 public class TCPClient {
     private String serverAddress;
@@ -32,6 +33,10 @@ public class TCPClient {
                     System.out.println("Exiting client.");
                     break;
                 }
+//                if (<ctrl+d>.equalsIgnoreCase(userInput)) {
+//                    System.out.println("Exiting client.");
+//                    break;
+//                }
                 byte[] data_to_send = userInput.getBytes("UTF-8");
                 if (data_to_send.length > MAX_PACKET_SIZE) {
                     System.out.println("Message too long. It has been truncated to "+MAX_PACKET_SIZE+" bytes.");
@@ -39,14 +44,14 @@ public class TCPClient {
                     System.arraycopy(userInput.getBytes("UTF-8"), 0, data_to_send, 0, MAX_PACKET_SIZE);
                 }
 
-                InputStream data_server = clientSocket.getInputStream();
-                OutputStream data_client = clientSocket.getOutputStream();
-                BufferedInputStream in = new BufferedInputStream(data_server);
-                PrintWriter out = new PrintWriter(data_client);
+                InputStream data_client = clientSocket.getInputStream();
+                OutputStream data_server = clientSocket.getOutputStream();
+                BufferedInputStream in = new BufferedInputStream(data_client);
+                PrintWriter out = new PrintWriter(data_server);
                 System.out.println("Message sent to " + serverAddress + ":" + serverPort);
                 //while connection établi lecture écriture
                 System.out.println("Received from "+serverAddress+":"+serverPort+" - "+in+"\n");
-                out.println();
+                out.println(Arrays.toString(data_to_send));
 
             }
         } catch (IOException e) {

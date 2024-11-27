@@ -35,7 +35,7 @@ public class TCPServer {
                 BufferedInputStream in = new BufferedInputStream(data_server);
                 PrintWriter out = new PrintWriter(data_client);
                 //while connection établi lecture écriture
-                System.out.println("Received from "+clientAddress+":"+clientPort+" - "+data_server+"\n");
+                System.out.println("Received from "+clientAddress+":"+clientPort+" - "+in+"\n");
                 out.println("echo"+in);
                 //
             }
