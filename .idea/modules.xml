@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/UDP-TCP-Chat-App.iml" filepath="$PROJECT_DIR$/UDP-TCP-Chat-App.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UDP-TCP-Chat-App-Java.iml" filepath="$PROJECT_DIR$/UDP-TCP-Chat-App-Java.iml" />
     </modules>
   </component>
 </project>
