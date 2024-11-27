@@ -1,8 +1,6 @@
 package TCP;
 
 import java.io.*;
-import java.net.InetAddress;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Arrays;
 
@@ -33,10 +31,6 @@ public class TCPClient {
                     System.out.println("Exiting client.");
                     break;
                 }
-//                if (<ctrl+d>.equalsIgnoreCase(userInput)) {
-//                    System.out.println("Exiting client.");
-//                    break;
-//                }
                 byte[] data_to_send = userInput.getBytes("UTF-8");
                 if (data_to_send.length > MAX_PACKET_SIZE) {
                     System.out.println("Message too long. It has been truncated to "+MAX_PACKET_SIZE+" bytes.");
@@ -55,17 +49,17 @@ public class TCPClient {
 
             }
         } catch (IOException e) {
-            System.err.println("Error in UDP Client: " + e.getMessage());
+            System.err.println("Error in TCP Client: " + e.getMessage());
         }
     }
     public static void main(String[] args) {
         if (args.length < 2) {
-            System.err.println("Usage: java UDPClient <server-address> <server-port>");
+            System.err.println("Usage: java TCPClient <server-address> <server-port>");
             return;
         }
         String serverAddress = args[0];
         int serverPort = Integer.parseInt(args[1]);
-        UDP.UDPClient client = new UDP.UDPClient(serverAddress, serverPort);
+        TCP.TCPClient client = new TCP.TCPClient(serverAddress, serverPort);
         client.start();
     }
 }
