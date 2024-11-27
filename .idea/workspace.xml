@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="448af90b-b369-42ff-be1d-5440b317dc1b" name="Changes" comment="update TCP">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TCP/TCPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TCP/TCPClient.java" afterDir="false" />
-    </list>
+    <list default="true" id="448af90b-b369-42ff-be1d-5440b317dc1b" name="Changes" comment="update TCP" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,7 +140,7 @@
       <workItem from="1731509765667" duration="5186000" />
       <workItem from="1732106099581" duration="4197000" />
       <workItem from="1732115303310" duration="2838000" />
-      <workItem from="1732711611013" duration="6653000" />
+      <workItem from="1732711611013" duration="7231000" />
     </task>
     <task id="LOCAL-00001" summary="add UDPServer">
       <option name="closed" value="true" />
@@ -321,7 +318,31 @@
       <option name="project" value="LOCAL" />
       <updated>1732716351437</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="update TCP">
+      <option name="closed" value="true" />
+      <created>1732722403729</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1732722403729</updated>
+    </task>
+    <task id="LOCAL-00024" summary="update TCP">
+      <option name="closed" value="true" />
+      <created>1732722430494</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1732722430494</updated>
+    </task>
+    <task id="LOCAL-00025" summary="update TCP">
+      <option name="closed" value="true" />
+      <created>1732722935279</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1732722935279</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
