@@ -32,12 +32,13 @@ public class TCPServer {
 
                 InputStream data_server = socket.getInputStream();
                 OutputStream data_client = socket.getOutputStream();
-                BufferedInputStream in = new BufferedInputStream(data_server);
+                BufferedReader in = new BufferedReader(new InputStreamReader(data_server));
                 PrintWriter out = new PrintWriter(data_client);
-                //while connection établi lecture écriture
-                System.out.println("Received from "+clientAddress+":"+clientPort+" - "+in+"\n");
-                out.println("echo"+in);
-                //
+                while(true){
+                    String data_to_print = in.readLine();
+                    System.out.println("Received from "+clientAddress+":"+clientPort+" - "+data_to_print+"\n");
+                    out.println("echo"+data_to_print);
+                }
             }
         } catch (IOException e) {
             System.err.println("Error in TCP Client: " + e.getMessage());
