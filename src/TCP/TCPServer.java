@@ -24,20 +24,24 @@ public class TCPServer {
         try {
             this.state = "Running";
             serverSocket = new ServerSocket(port);
-            while(true) {
+            while (true){
                 Socket socket = serverSocket.accept();
 
                 InetAddress clientAddress = socket.getInetAddress();
                 int clientPort = socket.getPort();
 
-                InputStream data_server = socket.getInputStream();
-                OutputStream data_client = socket.getOutputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(data_server));
-                PrintWriter out = new PrintWriter(data_client);
+                InputStream from_client = socket.getInputStream();
+                OutputStream to_client = socket.getOutputStream();
+                BufferedReader in = new BufferedReader(new InputStreamReader(from_client));
+                PrintWriter out = new PrintWriter(to_client,true);
                 while(true){
                     String data_to_print = in.readLine();
-                    System.out.println("Received from "+clientAddress+":"+clientPort+" - "+data_to_print+"\n");
-                    out.println("echo"+data_to_print);
+                    System.out.println("Client@"+clientAddress+":"+clientPort+" - "+data_to_print);
+                    out.println("Server"+data_to_print);
+                    if (data_to_print == null){
+                        socket.close();
+                        break;
+                    }
                 }
             }
         } catch (IOException e) {
