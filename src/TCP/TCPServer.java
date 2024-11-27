@@ -36,12 +36,13 @@ public class TCPServer {
                 PrintWriter out = new PrintWriter(to_client,true);
                 while(true){
                     String data_to_print = in.readLine();
-                    System.out.println("Client@"+clientAddress+":"+clientPort+" - "+data_to_print);
-                    out.println("Server"+data_to_print);
                     if (data_to_print == null){
                         socket.close();
+                        System.out.println("Client@"+clientAddress+":"+clientPort+" Disconnected");
                         break;
                     }
+                    System.out.println("Client@"+clientAddress+":"+clientPort+" - "+data_to_print);
+                    out.println(data_to_print);
                 }
             }
         } catch (IOException e) {
