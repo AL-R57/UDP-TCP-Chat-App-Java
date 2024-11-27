@@ -3,7 +3,6 @@ package TCP;
 import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 
 public class TCPClient {
     private String serverAddress;
