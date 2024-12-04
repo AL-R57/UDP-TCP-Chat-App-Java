@@ -2,8 +2,15 @@ package TCP;
 
 import java.io.*;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
+/**
+ * TCPClient
+ * @see TCPServer
+ * @see TCPMultiServer
+ * 
+ */
 public class TCPClient {
     private String serverAddress;
     private int serverPort;
@@ -16,6 +23,10 @@ public class TCPClient {
 
     /**
      * javadoc for start function
+     * <p>
+     *     ksjfglsdkjf
+     * </p>
+     * @see TCPServer
      */
     public void start() {
         try (Socket clientSocket = new Socket(serverAddress,serverPort)) {
@@ -31,11 +42,11 @@ public class TCPClient {
                     System.out.println("Exiting client.");
                     break;
                 }
-                byte[] data_to_send = userInput.getBytes("UTF-8");
+                byte[] data_to_send = userInput.getBytes(StandardCharsets.UTF_8);
                 if (data_to_send.length > MAX_PACKET_SIZE) {
                     System.out.println("Message too long. It has been truncated to "+MAX_PACKET_SIZE+" bytes.");
                     data_to_send = new byte[MAX_PACKET_SIZE];
-                    System.arraycopy(userInput.getBytes("UTF-8"), 0, data_to_send, 0, MAX_PACKET_SIZE);
+                    System.arraycopy(userInput.getBytes(StandardCharsets.UTF_8), 0, data_to_send, 0, MAX_PACKET_SIZE);
                 }
 
                 InputStream data_client = clientSocket.getInputStream();
