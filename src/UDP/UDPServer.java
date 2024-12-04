@@ -6,6 +6,11 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * A UDP server which retrieves messages from the UDP client.
+ * The server retrieves the UDP packets sent by the UDP client and echo them to the client.
+ * @see UDPClient
+ */
 public class UDPServer {
     private String state;
     private final int port;
@@ -29,10 +34,15 @@ public class UDPServer {
         this.state = "Open";
     }
 
+    /**
+     * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     *
+     */
     public void launch() throws IOException {
         DatagramSocket serverSocket = null;
         try {
             this.state = "Running";
+            System.out.println(state);
             serverSocket = new DatagramSocket(port);
             byte[] buf = new byte[MAX_PACKET_SIZE];
             while(true) {
@@ -49,6 +59,7 @@ public class UDPServer {
             if(serverSocket != null || !serverSocket.isClosed()){
                 serverSocket.close();
                 this.state = "Close";
+                System.out.println(state);
             }
         }
     }
@@ -64,17 +75,21 @@ public class UDPServer {
                 '}';
     }
 
-
+    /**
+     * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         int server_port;
-        if (args.length < 1) {
+        if (args.length < 1) { //create a default UDP server if the user didn't precise the port
             server_port = UDPServer.DEFAULT_PORT;
         } else{
             server_port = Integer.parseInt(args[0]);
         }
         UDPServer udpServer = new UDPServer(server_port);
-        System.out.println(udpServer.toString());
+        System.out.println(udpServer); //we don't need to put udpServer.toString() to call the method toString of the UDPServer
         udpServer.launch();
-        System.out.println(udpServer.toString());
+        System.out.println(udpServer);
     }
 }
