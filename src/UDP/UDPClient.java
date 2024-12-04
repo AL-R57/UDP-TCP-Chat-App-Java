@@ -19,8 +19,6 @@ public class UDPClient {
 
     /**
      * UDPClient constructor
-     * @param serverAddress
-     * @param serverPort
      */
     public UDPClient(String serverAddress, int serverPort) {
         this.serverAddress = serverAddress;
@@ -56,25 +54,20 @@ public class UDPClient {
 
     /**
      * Encodes the message to UTF-8 and truncates it if necessary
-     * @param message the message to encode
-     * @return the encoded message
      */
     private byte[] encodeMessage(String message) {
         byte[] dataToSend = message.getBytes(StandardCharsets.UTF_8);
         if (dataToSend.length > MAX_PACKET_SIZE) {
             System.out.println("Message is too long. It has been truncated to "+MAX_PACKET_SIZE+" bytes.");
-            byte[] trunc_data_to_send = new byte[MAX_PACKET_SIZE];
-            System.arraycopy(dataToSend, 0, dataToSend, 0, MAX_PACKET_SIZE);
-            return trunc_data_to_send;
+            byte[] truncatedDataToSend = new byte[MAX_PACKET_SIZE];
+            System.arraycopy(dataToSend, 0, truncatedDataToSend, 0, MAX_PACKET_SIZE);
+            return truncatedDataToSend;
         }
         return dataToSend;
     }
 
     /**
      * Sends a packet to the server.
-     * @param clientSocket the socket to use for sending the packet
-     * @param dataToSend the data to send
-     * @throws IOException if an I/O error occurs
      */
     private void sendPacket(DatagramSocket clientSocket, byte[] dataToSend) throws IOException {
         InetAddress serverInetAddress = InetAddress.getByName(serverAddress);
