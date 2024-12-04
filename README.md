@@ -24,7 +24,19 @@ tests:
 ![image](https://github.com/user-attachments/assets/611e2191-08bd-4ef2-bbac-65f9891150d5)
 
 
+UDP def:
+ UDPServer class representing a server that expects to receive datagrams from its clients containing strings encoded in ”UTF-8”. This server simply
+ displays on the standard output of the received string prefixed with the client’s address. It
+ is assumed that the server must accept strings whose size, once encoded; the server truncates the data received beyond this size.
+
+ UDPClient class that reads the text lines entered by the user from the standard input and sends them, encoded in ”utf-8”, in a UDP datagram to
+ the server specified in the argument on the command line.
+
+TCP def:
+
+
 modèle MVC
+
 
 
 todo:
