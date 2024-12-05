@@ -37,8 +37,6 @@ todo:
 
 # Create a UDP/TCP Chat App with Java sockets
 
----
-
 ## Project Overview
 
 This project supports both **UDP** and **TCP** communication protocols and is a **Java-based Client-Server Chat Application**. The goal is to show how to build a basic chat application that can manage client requests and server responses using Java sockets. In order to manage several TCP connections at once, the project also incorporates multi-threading.
