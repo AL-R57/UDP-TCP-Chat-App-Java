@@ -1,42 +1,5 @@
 # Create a UDP/TCP Chat App with Java sockets
 
-# 1- Creating a UDP Client-Server
-
-# 1.1 UDP Server
-
-No argument
-![image](https://github.com/user-attachments/assets/7bbcf6a8-6728-4b3c-baf2-e7917316cbda)
-
-Port 10000 in argument
-![image](https://github.com/user-attachments/assets/3bd547bc-5230-4a73-ab22-0c31857bd92c)
-
-
-UDP server test
-![image](https://github.com/user-attachments/assets/4bfcefde-9760-47ca-a30c-dc3b36499766)
-
-
-![image](https://github.com/user-attachments/assets/607fd557-8dd3-46a4-8203-6a1eb4791210)
-
-tests:
-![image](https://github.com/user-attachments/assets/b21a319e-7ba2-4b4b-8473-ac9199dd307c)
-
-
-![image](https://github.com/user-attachments/assets/611e2191-08bd-4ef2-bbac-65f9891150d5)
-
-
-modèle MVC
-
-
-todo:
-
--test codes
--read javadoc
--derniere question
--MTU
-
-
-# Create a UDP/TCP Chat App with Java sockets
-
 ## Project Overview
 
 This project supports both **UDP** and **TCP** communication protocols and is a **Java-based Client-Server Chat Application**. The goal is to show how to build a basic chat application that can manage client requests and server responses using Java sockets. In order to manage several TCP connections at once, the project also incorporates multi-threading.
@@ -54,7 +17,7 @@ This project supports both **UDP** and **TCP** communication protocols and is a 
 
 - **Key Methods**:
   - `UDPServer(int port)`: Constructor to initialize the server with a specified port.
-  - `UDPServer()`: Default constructor with a predefined port.
+  - `UDPServer()`: Default constructor with a default port.
   - `launch()`: Starts the server to listen for client messages.
   - `main(String[] args)`: Allows launching with the command:  
     ```sh
@@ -62,7 +25,7 @@ This project supports both **UDP** and **TCP** communication protocols and is a 
     ```
 
 - **Usage**:  
-  To test, use the `netcat` command in a separate terminal:
+  Use the `netcat` command in a separate terminal to test:
   ```sh
   $ nc -u localhost 8080
 
@@ -71,14 +34,14 @@ This project supports both **UDP** and **TCP** communication protocols and is a 
 - **Definition**:
   The `UDPClient` class reads user-inputted text lines from the standard input and transmits them to the server as **UTF-8** encoded datagrams. When launching the client, the address and port of the server are entered as command-line parameters.
 
-- **Key Methods**:
+- **Key Methods**: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   - Reads user input from the console.
   - Sends the input as a UTF-8 encoded datagram to the server.
 
 - **Usage**:
   - After starting the UDP server, run the UDP client using the following command:
     ```sh
-    $ java UDPClient <hostname> <port>
+    $ java UDPClient <serverAddress> <serverPort>
     ```
     Example:
     ```sh
@@ -104,7 +67,7 @@ This project supports both **UDP** and **TCP** communication protocols and is a 
 
 After connecting to a client, the TCP server receives messages and relays them back to the client, prefixing them with the IP address of the client.
 
-- **Key Methods**:
+- **Key Methods**: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   - `launch()`: 
     - Creates a `ServerSocket` to listen for incoming connections.
     - Accepts a client connection using the `accept()` method.
@@ -132,7 +95,7 @@ After connecting to a client, the TCP server receives messages and relays them b
 
 After connecting to the TCP server, the TCP client transmits messages and shows the server's echoed answers.
 
-- **Key Methods**:
+- **Key Methods**: !!!!!!!!!!!!!!!!!!!!!
   - Reads user input from the console.
   - Sends the input as a UTF-8 encoded message to the server.
   - Reads the echoed response from the server and prints it to the console.
@@ -154,3 +117,21 @@ After connecting to the TCP server, the TCP client transmits messages and shows 
 
 - **Exiting**:
   - Use `<CTRL> + D` to end the input and close the client connection.
+
+
+
+
+
+
+
+
+
+
+
+todo:
+-finish readme for keymethods  UDPserver TCPServer TCPClient
+-separation UDPserver TCPServer TCPClient
+-test codes
+-javadoc
+-derniere question
+-MTU
