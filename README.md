@@ -103,3 +103,59 @@ The UDP client sends user input to the server over UDP.
 
 - **Exiting**:
   - Type `exit` to terminate the client.
+
+---
+
+### 2. TCP Communication
+
+#### 2.1 TCP Server (`TCPServer.java`)
+
+The TCP server establishes a connection with a client, receives messages, and echoes them back, prefixed with the client’s IP address.
+
+- **Key Methods**:
+  - `launch()`: 
+    - Creates a `ServerSocket` to listen for incoming connections.
+    - Accepts a client connection using the `accept()` method.
+    - Reads data from the client and sends an echo response.
+
+- **Command to run**:
+    ```sh
+    $ java TCPServer <port>
+    ```
+    Example:
+    ```sh
+    $ java TCPServer 8080
+    ```
+
+- **How It Works**:
+  1. The server waits for a client to connect.
+  2. Once connected, it reads messages from the client.
+  3. The server sends back an echoed response with the client’s IP address.
+  4. The connection continues until the client disconnects.
+
+#### 2.2 TCP Client (`TCPClient.java`)
+
+The TCP client establishes a connection to the TCP server, sends messages, and displays the echoed responses from the server.
+
+- **Key Methods**:
+  - Reads user input from the console.
+  - Sends the input as a UTF-8 encoded message to the server.
+  - Reads the echoed response from the server and prints it to the console.
+
+- **Command to run**:
+    ```sh
+    $ java TCPClient <hostname> <port>
+    ```
+    Example:
+    ```sh
+    $ java TCPClient localhost 8080
+    ```
+
+- **How It Works**:
+  1. The client connects to the server using the provided hostname and port.
+  2. It reads user input line by line and sends each line to the server.
+  3. The client prints the server's echoed response.
+  4. The session ends when the user inputs `<CTRL> + D` or closes the standard input.
+
+- **Exiting**:
+  - Use `<CTRL> + D` to end the input and close the client connection.
