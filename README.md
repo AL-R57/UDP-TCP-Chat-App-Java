@@ -77,3 +77,29 @@ The UDP server listens for incoming datagrams, processes the received data, and 
   To test, use the `netcat` command in a separate terminal:
   ```sh
   $ nc -u localhost 8080
+
+#### 1.2 UDP Client (`UDPClient.java`)
+
+The UDP client sends user input to the server over UDP.
+
+- **Key Methods**:
+  - Reads user input from the console.
+  - Sends the input as a UTF-8 encoded datagram to the server.
+
+- **Usage**:
+  - After starting the UDP server, run the UDP client using the following command:
+    ```sh
+    $ java UDPClient <hostname> <port>
+    ```
+    Example:
+    ```sh
+    $ java UDPClient localhost 8080
+    ```
+
+- **How It Works**:
+  1. The client reads lines of text entered by the user.
+  2. Each line is sent as a datagram to the server at the specified hostname and port.
+  3. The server responds by printing the received message along with the client's IP.
+
+- **Exiting**:
+  - Type `exit` to terminate the client.
