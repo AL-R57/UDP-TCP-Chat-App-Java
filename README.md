@@ -45,3 +45,35 @@ todo:
 -read javadoc
 -derniere question
 -MTU
+
+
+# README for UDP and TCP Chat Application with Multi-threading Support
+
+---
+
+## Project Overview
+
+This project is a **Java-based Client-Server Chat Application** supporting both **UDP** and **TCP** communication protocols. The objective is to demonstrate the use of Java sockets to create a simple chat application that can handle client requests and server responses. The project also includes multi-threading for handling multiple TCP connections simultaneously.
+
+---
+
+## Application Components
+
+### 1. UDP Communication
+
+#### 1.1 UDP Server (`UDPServer.java`)
+The UDP server listens for incoming datagrams, processes the received data, and displays the messages prefixed with the client’s IP address.
+
+- **Key Methods**:
+  - `UDPServer(int port)`: Constructor to initialize the server with a specified port.
+  - `UDPServer()`: Default constructor with a predefined port.
+  - `launch()`: Starts the server to listen for client messages.
+  - `main(String[] args)`: Allows launching with the command:  
+    ```sh
+    $ java UDPServer 8080
+    ```
+
+- **Usage**:  
+  To test, use the `netcat` command in a separate terminal:
+  ```sh
+  $ nc -u localhost 8080
