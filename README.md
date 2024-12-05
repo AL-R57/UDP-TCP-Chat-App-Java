@@ -47,13 +47,13 @@ todo:
 -MTU
 
 
-# README for UDP and TCP Chat Application with Multi-threading Support
+# Create a UDP/TCP Chat App with Java sockets
 
 ---
 
 ## Project Overview
 
-This project is a **Java-based Client-Server Chat Application** supporting both **UDP** and **TCP** communication protocols. The objective is to demonstrate the use of Java sockets to create a simple chat application that can handle client requests and server responses. The project also includes multi-threading for handling multiple TCP connections simultaneously.
+This project supports both **UDP** and **TCP** communication protocols and is a **Java-based Client-Server Chat Application**. The goal is to show how to build a basic chat application that can manage client requests and server responses using Java sockets. In order to manage several TCP connections at once, the project also incorporates multi-threading.
 
 ---
 
@@ -62,7 +62,7 @@ This project is a **Java-based Client-Server Chat Application** supporting both 
 ### 1. UDP Communication
 
 #### 1.1 UDP Server (`UDPServer.java`)
-The UDP server listens for incoming datagrams, processes the received data, and displays the messages prefixed with the client’s IP address.
+After processing the data it receives and listening for incoming datagrams, the UDP server shows the messages that are preceded by the client's IP address.
 
 - **Key Methods**:
   - `UDPServer(int port)`: Constructor to initialize the server with a specified port.
@@ -80,7 +80,7 @@ The UDP server listens for incoming datagrams, processes the received data, and 
 
 #### 1.2 UDP Client (`UDPClient.java`)
 
-The UDP client sends user input to the server over UDP.
+User input is transmitted over UDP from the UDP client to the server.
 
 - **Key Methods**:
   - Reads user input from the console.
@@ -110,7 +110,7 @@ The UDP client sends user input to the server over UDP.
 
 #### 2.1 TCP Server (`TCPServer.java`)
 
-The TCP server establishes a connection with a client, receives messages, and echoes them back, prefixed with the client’s IP address.
+After connecting to a client, the TCP server receives messages and relays them back to the client, prefixing them with the IP address of the client.
 
 - **Key Methods**:
   - `launch()`: 
@@ -135,7 +135,7 @@ The TCP server establishes a connection with a client, receives messages, and ec
 
 #### 2.2 TCP Client (`TCPClient.java`)
 
-The TCP client establishes a connection to the TCP server, sends messages, and displays the echoed responses from the server.
+After connecting to the TCP server, the TCP client transmits messages and shows the server's echoed answers.
 
 - **Key Methods**:
   - Reads user input from the console.
