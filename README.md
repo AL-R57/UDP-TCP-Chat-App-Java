@@ -51,7 +51,8 @@ This project supports both **UDP** and **TCP** communication protocols and is a 
 
 #### 1.1 UDP Server (`UDPServer.java`)
 
-  A server that receives datagrams from clients is represented by the `UDPServer` class. The server anticipates that strings encoded in **UTF-8** will be present in the datagrams. The client's address appears before each received string on the server's standard output. Strings can only be up to 1500 bytes in size on the server. Any data that is larger than this is truncated.
+- **Definition**:
+  A server that receives datagrams from clients is represented by the `UDPServer` class. The server anticipates that strings encoded in **UTF-8** will be present in the datagrams. The client's address appears before each received string on the server's standard output. Each message can only be up to 1500 bytes in size. Any data that is larger than this is truncated.
 
 - **Key Methods**:
   - `UDPServer(int port)`: Constructor to initialize the server with a specified port.
@@ -69,7 +70,7 @@ This project supports both **UDP** and **TCP** communication protocols and is a 
 
 #### 1.2 UDP Client (`UDPClient.java`)
 
-- **UDPClient**:  
+- **Definition**:
   The `UDPClient` class reads user-inputted text lines from the standard input and transmits them to the server as **UTF-8** encoded datagrams. When launching the client, the address and port of the server are entered as command-line parameters.
 
 - **Key Methods**:
@@ -100,7 +101,7 @@ This project supports both **UDP** and **TCP** communication protocols and is a 
 
 #### 2.1 TCP Server (`TCPServer.java`)
 
-- **TCPServer**:  
+- **Definition**:
   A **TCP** connection is made to a client via the `TCPServer` class. After connecting, it sends back an echo response after receiving messages from the client and displaying them on the server console. The answer provides the original message prefixed with the client’s IP address. One client at a time is served by the server.
 
 After connecting to a client, the TCP server receives messages and relays them back to the client, prefixing them with the IP address of the client.
@@ -128,7 +129,7 @@ After connecting to a client, the TCP server receives messages and relays them b
 
 #### 2.2 TCP Client (`TCPClient.java`)
 
-- **TCPClient**:  
+- **Definition**:
   Using **TCP**, the `TCPClient` class establishes a connection with the server and transmits user-inputted text lines. It shows the echoed response from the server on the console after waiting for it. Until the user closes the input stream (using `\CTRL> + D`), the client keeps sending messages.
 
 After connecting to the TCP server, the TCP client transmits messages and shows the server's echoed answers.
