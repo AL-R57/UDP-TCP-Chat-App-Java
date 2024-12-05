@@ -24,19 +24,7 @@ tests:
 ![image](https://github.com/user-attachments/assets/611e2191-08bd-4ef2-bbac-65f9891150d5)
 
 
-UDP def:
- UDPServer class representing a server that expects to receive datagrams from its clients containing strings encoded in ”UTF-8”. This server simply
- displays on the standard output of the received string prefixed with the client’s address. It
- is assumed that the server must accept strings whose size, once encoded; the server truncates the data received beyond this size.
-
- UDPClient class that reads the text lines entered by the user from the standard input and sends them, encoded in ”utf-8”, in a UDP datagram to
- the server specified in the argument on the command line.
-
-TCP def:
-
-
 modèle MVC
-
 
 
 todo:
@@ -62,7 +50,8 @@ This project supports both **UDP** and **TCP** communication protocols and is a 
 ### 1. UDP Communication
 
 #### 1.1 UDP Server (`UDPServer.java`)
-After processing the data it receives and listening for incoming datagrams, the UDP server shows the messages that are preceded by the client's IP address.
+
+  A server that receives datagrams from clients is represented by the `UDPServer` class. The server anticipates that strings encoded in **UTF-8** will be present in the datagrams. The client's address appears before each received string on the server's standard output. Strings can only be up to 1500 bytes in size on the server. Any data that is larger than this is truncated.
 
 - **Key Methods**:
   - `UDPServer(int port)`: Constructor to initialize the server with a specified port.
@@ -80,7 +69,8 @@ After processing the data it receives and listening for incoming datagrams, the 
 
 #### 1.2 UDP Client (`UDPClient.java`)
 
-User input is transmitted over UDP from the UDP client to the server.
+- **UDPClient**:  
+  The `UDPClient` class reads user-inputted text lines from the standard input and transmits them to the server as **UTF-8** encoded datagrams. When launching the client, the address and port of the server are entered as command-line parameters.
 
 - **Key Methods**:
   - Reads user input from the console.
@@ -110,6 +100,9 @@ User input is transmitted over UDP from the UDP client to the server.
 
 #### 2.1 TCP Server (`TCPServer.java`)
 
+- **TCPServer**:  
+  A **TCP** connection is made to a client via the `TCPServer` class. After connecting, it sends back an echo response after receiving messages from the client and displaying them on the server console. The answer provides the original message prefixed with the client’s IP address. One client at a time is served by the server.
+
 After connecting to a client, the TCP server receives messages and relays them back to the client, prefixing them with the IP address of the client.
 
 - **Key Methods**:
@@ -134,6 +127,9 @@ After connecting to a client, the TCP server receives messages and relays them b
   4. The connection continues until the client disconnects.
 
 #### 2.2 TCP Client (`TCPClient.java`)
+
+- **TCPClient**:  
+  Using **TCP**, the `TCPClient` class establishes a connection with the server and transmits user-inputted text lines. It shows the echoed response from the server on the console after waiting for it. Until the user closes the input stream (using `\CTRL> + D`), the client keeps sending messages.
 
 After connecting to the TCP server, the TCP client transmits messages and shows the server's echoed answers.
 
