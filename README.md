@@ -49,7 +49,7 @@ This project supports both **UDP** and **TCP** communication protocols and is a 
 
 #### 1.1 UDP Server (`UDPServer.java`)
 
-- **Definition**:
+- **Definition**: 
   A server that receives datagrams from clients is represented by the `UDPServer` class. The server anticipates that strings encoded in **UTF-8** will be present in the datagrams. The client's address appears before each received string on the server's standard output. Each message can only be up to 1500 bytes in size. Any data that is larger than this is truncated.
 
 - **Key Methods**:
