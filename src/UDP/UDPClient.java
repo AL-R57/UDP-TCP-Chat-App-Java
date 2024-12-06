@@ -37,18 +37,25 @@ public class UDPClient {
                 System.err.println("No console available.");
                 return;
             }
-            System.out.println("What is your message? Press Enter to send ('exit' to quit):");
-            while (true) {
-                String userInput = console.readLine();
-                if ("exit".equalsIgnoreCase(userInput)) {
-                    System.out.println("Exiting client.");
-                    break;
-                }
-                byte[] dataToSend = encodeMessage(userInput);
-                sendPacket(clientSocket,dataToSend);
-            }
+            handleInputUser(clientSocket,console);
         } catch (IOException e) {
             System.err.println("Error in UDP Client: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Handles the Input user and throws an IOException if sendPacket throws one
+     */
+    private void handleInputUser(DatagramSocket clientSocket, Console console) throws IOException{
+        System.out.println("What is your message? Press Enter to send ('exit' to quit):");
+        while (true) {
+            String userInput = console.readLine();
+            if ("exit".equalsIgnoreCase(userInput)) {
+                System.out.println("Exiting client.");
+                break;
+            }
+            byte[] dataToSend = encodeMessage(userInput);
+            sendPacket(clientSocket,dataToSend);
         }
     }
 
@@ -68,6 +75,7 @@ public class UDPClient {
 
     /**
      * Sends a packet to the server.
+     * @throws IOException if the server is unreachable
      */
     private void sendPacket(DatagramSocket clientSocket, byte[] dataToSend) throws IOException {
         InetAddress serverInetAddress = InetAddress.getByName(serverAddress);
