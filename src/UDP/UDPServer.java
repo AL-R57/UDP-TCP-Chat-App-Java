@@ -16,7 +16,7 @@ public class UDPServer {
     private final int port;
     private static final int DEFAULT_PORT = 8080;
     private static final int MAX_PACKET_SIZE = 1500; //MTU value for ethernet
-    private static final int MAX_TIME_SERVER = 15000; //1 minute of inaction to close UDP server
+    private static final int MAX_TIME_SERVER = 60000; //1 minute of inaction to close UDP server
 
     /**
      * UDPServer constructor
