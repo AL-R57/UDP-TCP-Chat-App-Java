@@ -2,48 +2,56 @@ package UDP;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-
+import static jdk.internal.org.objectweb.asm.util.CheckClassAdapter.verify;
+import static jdk.internal.vm.compiler.word.LocationIdentity.any;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+import java.io.Console;
+import java.io.IOException;
+import java.net.DatagramSocket;
 
 class UDPClientTest {
 
     @Test
-    void start() throws Exception {
-        // Simulate a server to receive messages
-        int serverPort = 9090;
-        try (DatagramSocket serverSocket = new DatagramSocket(serverPort)) {
-            // Run the client in a separate thread
-            Thread clientThread = new Thread(() -> {
-                try {
-                    // Redirect System.in to simulate user input
-                    String simulatedInput = "Hello, Server\nexit\n";
-                    InputStream input = new ByteArrayInputStream(simulatedInput.getBytes());
-                    System.setIn(input);
-                    UDPClient client = new UDPClient("localhost", serverPort);
-                    client.start();
-                } catch (Exception e) {
-                    fail("Client threw an exception: " + e.getMessage());
-                }
-            });
-            clientThread.start();
-            // Server-side: Wait for packets
-            byte[] buffer = new byte[1500];
-            DatagramPacket receivedPacket = new DatagramPacket(buffer, buffer.length);
-            serverSocket.receive(receivedPacket);
-            String receivedMessage = new String(receivedPacket.getData(), 0, receivedPacket.getLength());
-            assertEquals("Hello, Server", receivedMessage);
-            clientThread.join(); // Ensure the client thread finishes
-        }
+    void testConstructor() {
+        UDPClient client = new UDPClient("localhost", 8080);
+        assertNotNull(client, "The client should be instantiated.");
     }
 
+    // Test the encodeMessage method for short and long messages
     @Test
-    void main() {
-        // Test the main method to ensure it starts the client correctly
-        String[] args = {"localhost", "9090"};
+    void testEncodeMessage() {
+        UDPClient client = new UDPClient("localhost", 8080);
+        // Short message
+        String message = "Hello";
+        byte[] encodedMessage = client.encodeMessage(message);
+        assertEquals(message.length(), encodedMessage.length, "Short message should encode correctly.");
+        // Long message (greater than MAX_PACKET_SIZE)
+        String longMessage = "A".repeat(2000);  // Message longer than MAX_PACKET_SIZE
+        byte[] longEncodedMessage = client.encodeMessage(longMessage);
+        assertEquals(1500, longEncodedMessage.length, "Long message should be truncated to MAX_PACKET_SIZE.");
+    }
+
+
+    // Test the sendPacket method (mock DatagramSocket)
+    @Test
+    void testSendPacket() throws IOException {
+        UDPClient client = new UDPClient("localhost", 8080);
+        DatagramSocket mockSocket = mock(DatagramSocket.class);
+
+        byte[] dataToSend = "Test Message".getBytes();
+        client.sendPacket(mockSocket, dataToSend);
+
+        // Verify that the send() method was called on the mock socket
+        verify(mockSocket).send(any());
+    }
+
+    // Test for the main method - No need to test deeply, just check execution
+    @Test
+    void testMain() {
+        String[] args = {"localhost", "8080"};
+        // We won't assert anything but just ensure that it runs without exception
         assertDoesNotThrow(() -> UDPClient.main(args));
     }
 }
