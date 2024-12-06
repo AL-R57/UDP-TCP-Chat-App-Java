@@ -16,7 +16,8 @@ public class UDPServer {
     private final int port;
     private static final int DEFAULT_PORT = 8080;
     private static final int MAX_PACKET_SIZE = 1500; //MTU value for ethernet
-    private static final int MAX_TIME_SERVER = 60000; //1 minute of inaction to close UDP server
+    private static final int MAX_TIME_SERVER = 10000; //1 minute of inaction to close UDP server
+    // for the unitary test we will take 10 sec instead of 1 minute because the tests have to be fast
 
     /**
      * UDPServer constructor
@@ -113,6 +114,17 @@ public class UDPServer {
                 "state='" + state + '\'' +
                 ", port=" + port +
                 '}';
+    }
+
+    /**
+     * needed for the unitary tests
+     */
+    public int getPort() {
+        return port;
+    }
+
+    public String getState() {
+        return state;
     }
 
     /**
