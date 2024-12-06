@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="UDP-TCP-Chat-App-Java" options="--add-exports java.base/jdk.internal.org.objectweb.asm.util=ALL-UNNAMED --add-exports jdk.internal.vm.compiler/jdk.internal.vm.compiler.word=ALL-UNNAMED" />
+    </option>
+  </component>
+</project>

@@ -5,8 +5,6 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-
-//test est ce que ca connecte???
 public class TCPServer {
     private String state;
     private int port;
