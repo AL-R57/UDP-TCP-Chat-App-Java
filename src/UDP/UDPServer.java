@@ -1,6 +1,5 @@
 package UDP;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -17,7 +16,7 @@ public class UDPServer {
     private final int port;
     private static final int DEFAULT_PORT = 8080;
     private static final int MAX_PACKET_SIZE = 1500; //MTU value for ethernet
-    private static final int MAX_TIME_SERVER = 60000; //1 minute of inaction to close UDP server
+    private static final int MAX_TIME_SERVER = 10000; //1 minute of inaction to close UDP server
 
     /**
      * UDPServer constructor
@@ -47,6 +46,7 @@ public class UDPServer {
             serverSocket = new DatagramSocket(port);
             listenForPackets(serverSocket);
         } finally {
+            assert serverSocket != null;
             stopServer(serverSocket);
         }
     }
@@ -74,7 +74,6 @@ public class UDPServer {
             DatagramPacket datagramPacket = new DatagramPacket(buf, MAX_PACKET_SIZE);
             serverSocket.receive(datagramPacket);
             processReceivedPacket(datagramPacket);
-
         }
     }
 
