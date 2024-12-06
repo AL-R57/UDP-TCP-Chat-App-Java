@@ -1,5 +1,6 @@
 package UDP;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -16,13 +17,14 @@ public class UDPServer {
     private final int port;
     private static final int DEFAULT_PORT = 8080;
     private static final int MAX_PACKET_SIZE = 1500; //MTU value for ethernet
+    private static final int MAX_TIME_SERVER = 60000; //1 minute of inaction to close UDP server
 
     /**
      * UDPServer constructor
-     * @param serv_listening_port
+     * @param servListeningPort port available to listen to UDP Client
      */
-    public UDPServer(int serv_listening_port) {
-        this.port = serv_listening_port;
+    public UDPServer(int servListeningPort) {
+        this.port = servListeningPort;
         this.state = "Open";
     }
 
@@ -35,33 +37,64 @@ public class UDPServer {
     }
 
     /**
-     * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     *
+     * Launches the UDP server and begins listening for incoming messages.
+     * Initializes the socket and delegates message processing to helper methods.
      */
     public void launch() throws IOException {
         DatagramSocket serverSocket = null;
         try {
-            this.state = "Running";
-            System.out.println(state);
+            startServer();
             serverSocket = new DatagramSocket(port);
-            byte[] buf = new byte[MAX_PACKET_SIZE];
-            while(true) {
-                DatagramPacket datagramPacket = new DatagramPacket(buf, MAX_PACKET_SIZE);
-                serverSocket.receive(datagramPacket);
-
-                InetAddress clientAddress = datagramPacket.getAddress();
-                int clientPort = datagramPacket.getPort();
-
-                String data_received = new String(datagramPacket.getData(), 0, datagramPacket.getLength(), StandardCharsets.UTF_8);
-                System.out.println("Received from "+clientAddress+":"+clientPort+" - "+data_received+"\n");
-            }
+            listenForPackets(serverSocket);
         } finally {
-            if(serverSocket != null || !serverSocket.isClosed()){
-                serverSocket.close();
-                this.state = "Close";
-                System.out.println(state);
-            }
+            stopServer(serverSocket);
         }
+    }
+
+    /**
+     * Updates the state of the server in Running
+     */
+    private void startServer() {
+        this.state = "Running";
+        System.out.println(state);
+    }
+
+    /**
+     * Listens to server port and process the received datagram.
+     */
+    private void listenForPackets(DatagramSocket serverSocket) throws IOException{
+        long startTime = System.currentTimeMillis();
+        byte[] buf = new byte[MAX_PACKET_SIZE];
+        while(true) {
+            long elapsedTime = System.currentTimeMillis() - startTime;
+            if (elapsedTime >= MAX_TIME_SERVER) {
+                System.out.println("Server reached timeout. Shutting down...");
+                break;
+            }
+            DatagramPacket datagramPacket = new DatagramPacket(buf, MAX_PACKET_SIZE);
+            serverSocket.receive(datagramPacket);
+            processReceivedPacket(datagramPacket);
+
+        }
+    }
+
+    /**
+     * Processes the received packet
+     */
+    private void processReceivedPacket(DatagramPacket datagramPacket){
+        InetAddress clientAddress = datagramPacket.getAddress();
+        int clientPort = datagramPacket.getPort();
+        String dataReceived = new String(datagramPacket.getData(), 0, datagramPacket.getLength(), StandardCharsets.UTF_8);
+        System.out.println("Received from "+clientAddress+":"+clientPort+" - "+dataReceived+"\n");
+    }
+
+    /**
+     * Stop the server and close the socket
+     */
+    private void stopServer(DatagramSocket  serverSocket){
+        serverSocket.close();
+        this.state = "Close";
+        System.out.println(state);
     }
 
     /**
@@ -76,9 +109,7 @@ public class UDPServer {
     }
 
     /**
-     * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     * @param args
-     * @throws IOException
+     * Creates and launches a UDPServer with the specified port or a default port.
      */
     public static void main(String[] args) throws IOException {
         int server_port;
