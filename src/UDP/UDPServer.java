@@ -16,7 +16,7 @@ public class UDPServer {
     private final int port;
     private static final int DEFAULT_PORT = 8080;
     private static final int MAX_PACKET_SIZE = 1500; //MTU value for ethernet
-    private static final int MAX_TIME_SERVER = 10000; //1 minute of inaction to close UDP server
+    private static final int MAX_TIME_SERVER = 15000; //1 minute of inaction to close UDP server
 
     /**
      * UDPServer constructor
@@ -63,17 +63,25 @@ public class UDPServer {
      * Listens to server port and process the received datagram.
      */
     private void listenForPackets(DatagramSocket serverSocket) throws IOException{
-        long startTime = System.currentTimeMillis();
+        long lastActiveTime = System.currentTimeMillis(); //the time when the server receive a packet
         byte[] buf = new byte[MAX_PACKET_SIZE];
         while(true) {
-            long elapsedTime = System.currentTimeMillis() - startTime;
+            long currentTime = System.currentTimeMillis();
+            long elapsedTime = currentTime - lastActiveTime;
             if (elapsedTime >= MAX_TIME_SERVER) {
-                System.out.println("Server reached timeout. Shutting down...");
+                System.out.println("Server timed out after " + MAX_TIME_SERVER/1000 + " seconds of inactivity. Shutting down...");
                 break;
             }
-            DatagramPacket datagramPacket = new DatagramPacket(buf, MAX_PACKET_SIZE);
-            serverSocket.receive(datagramPacket);
-            processReceivedPacket(datagramPacket);
+            // Set the socket timeout to allow periodic checks for inactivity
+            serverSocket.setSoTimeout((int) (MAX_TIME_SERVER - elapsedTime)); // Remaining time until timeout
+            try {
+                DatagramPacket datagramPacket = new DatagramPacket(buf, MAX_PACKET_SIZE);
+                serverSocket.receive(datagramPacket); // Blocking call, waits for a packet
+                processReceivedPacket(datagramPacket);
+                lastActiveTime = System.currentTimeMillis(); // Reset timer on activity
+            } catch (java.net.SocketTimeoutException e) {
+                System.err.println("No packet received within the socket timeout"); //loop back to check inactivity
+            }
         }
     }
 
