@@ -62,7 +62,7 @@ public class UDPClient {
     /**
      * Encodes the message to UTF-8 and truncates it if necessary
      */
-    private byte[] encodeMessage(String message) {
+    byte[] encodeMessage(String message) {
         byte[] dataToSend = message.getBytes(StandardCharsets.UTF_8);
         if (dataToSend.length > MAX_PACKET_SIZE) {
             System.out.println("Message is too long. It has been truncated to "+MAX_PACKET_SIZE+" bytes.");
@@ -77,7 +77,7 @@ public class UDPClient {
      * Sends a packet to the server.
      * @throws IOException if the server is unreachable
      */
-    private void sendPacket(DatagramSocket clientSocket, byte[] dataToSend) throws IOException {
+    void sendPacket(DatagramSocket clientSocket, byte[] dataToSend) throws IOException {
         InetAddress serverInetAddress = InetAddress.getByName(serverAddress);
         DatagramPacket packet = new DatagramPacket(dataToSend, dataToSend.length, serverInetAddress, serverPort);
         clientSocket.send(packet);
