@@ -130,8 +130,6 @@ After connecting to the TCP server, the TCP client transmits messages and shows 
 
 todo:
 -finish readme for keymethods  UDPserver TCPServer TCPClient
--separation UDPserver TCPServer TCPClient
+-separation TCPServer TCPClient
 -test codes
 -javadoc
--derniere question
--MTU
