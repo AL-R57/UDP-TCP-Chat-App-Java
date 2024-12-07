@@ -32,7 +32,7 @@ public class UDPClient {
      */
     public void start() {
         try (DatagramSocket clientSocket = new DatagramSocket()) {
-            Console console = System.console();
+            Console console = getConsole();
             if (console == null) {
                 System.err.println("No console available.");
                 return;
@@ -41,6 +41,10 @@ public class UDPClient {
         } catch (IOException e) {
             System.err.println("Error in UDP Client: " + e.getMessage());
         }
+    }
+
+    protected Console getConsole() {
+        return System.console();
     }
 
     /**

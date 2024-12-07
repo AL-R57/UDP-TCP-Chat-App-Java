@@ -77,7 +77,7 @@ class UDPClientTest {
         // Allow server time to initialize
         Thread.sleep(1000);
 
-        // Mocking Console
+        // Mock Console
         Console mockedConsole = mock(Console.class);
         when(mockedConsole.readLine())
                 .thenReturn("Mocked Message", "exit");
@@ -89,46 +89,37 @@ class UDPClientTest {
                 return mockedConsole;
             }
         };
-        // Start client
         client.start();
-
-        // Wait for server thread
         serverThread.join();
     }
-}
 
     @Test
     void testMain() throws Exception {
-        // Start a local server
+        // Start a local server to simulate receiving messages
         Thread serverThread = new Thread(() -> {
             try (DatagramSocket serverSocket = new DatagramSocket(8080)) {
                 byte[] buffer = new byte[1500];
                 DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
                 serverSocket.receive(packet);
                 String receivedMessage = new String(packet.getData(), 0, packet.getLength());
-                assertEquals("Message from Main", receivedMessage);
-            } catch (Exception e) {
+                assertEquals("Hello from Main", receivedMessage);
+            } catch (IOException e) {
                 fail("Server error: " + e.getMessage());
             }
         });
         serverThread.start();
         // Allow server time to initialize
         Thread.sleep(1000);
-
-        // Simulate client main
+        // Simulate `main` method execution
         Thread clientThread = new Thread(() -> {
             String[] args = {"localhost", "8080"};
-            try {
-                String simulatedInput = "Message from Main\nexit\n";
-                // Redirect System.in to simulate user input
-                System.setIn(new java.io.ByteArrayInputStream(simulatedInput.getBytes()));
-                UDPClient.main(args);
-            } catch (Exception e) {
-                fail("Client error: " + e.getMessage());
-            }
+            // Simulate user input for the client
+            System.setIn(new java.io.ByteArrayInputStream("Hello from Main\nexit\n".getBytes()));
+            assertDoesNotThrow(() -> UDPClient.main(args));
         });
         clientThread.start();
-        // Wait for threads to finish
+
+        // Wait for threads to complete
         clientThread.join();
         serverThread.join();
     }

@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="448af90b-b369-42ff-be1d-5440b317dc1b" name="Changes" comment="update TCP">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UDP/UDPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UDP/UDPClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UDP/UDPClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UDP/UDPClientTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,6 +66,7 @@
     "JUnit.UDPClientTest.testMain.executor": "Run",
     "JUnit.UDPClientTest.testSendPacket.executor": "Run",
     "JUnit.UDPClientTest.testStart.executor": "Run",
+    "JUnit.UDPClientTest.testStartWithMockConsole.executor": "Run",
     "JUnit.UDPServerTest.testConstructor.executor": "Coverage",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -99,7 +101,7 @@
       <recent name="UDP" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UDPClientTest.testStart">
+  <component name="RunManager" selected="JUnit.UDPClientTest.testStartWithMockConsole">
     <configuration name="TCPServer" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="TCP.TCPServer" />
       <module name="UDP-TCP-Chat-App-Java" />
@@ -130,7 +132,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UDPClientTest.testEncodeMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UDPClientTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="UDP-TCP-Chat-App-Java" />
       <extension name="coverage">
         <pattern>
@@ -140,8 +142,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="UDP" />
       <option name="MAIN_CLASS_NAME" value="UDP.UDPClientTest" />
-      <option name="METHOD_NAME" value="testEncodeMessage" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -157,22 +158,6 @@
       <option name="PACKAGE_NAME" value="UDP" />
       <option name="MAIN_CLASS_NAME" value="UDP.UDPClientTest" />
       <option name="METHOD_NAME" value="testMain" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UDPClientTest.testSendPacket" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="UDP-TCP-Chat-App-Java" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="UDP.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="UDP" />
-      <option name="MAIN_CLASS_NAME" value="UDP.UDPClientTest" />
-      <option name="METHOD_NAME" value="testSendPacket" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -194,7 +179,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UDPServerTest.testConstructor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UDPClientTest.testStartWithMockConsole" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="UDP-TCP-Chat-App-Java" />
       <extension name="coverage">
         <pattern>
@@ -203,8 +188,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="UDP" />
-      <option name="MAIN_CLASS_NAME" value="UDP.UDPServerTest" />
-      <option name="METHOD_NAME" value="testConstructor" />
+      <option name="MAIN_CLASS_NAME" value="UDP.UDPClientTest" />
+      <option name="METHOD_NAME" value="testStartWithMockConsole" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -214,19 +199,18 @@
       <item itemvalue="Application.TCPServer" />
       <item itemvalue="Application.UDPClient" />
       <item itemvalue="Application.UDPServer" />
-      <item itemvalue="JUnit.UDPClientTest.testEncodeMessage" />
+      <item itemvalue="JUnit.UDPClientTest" />
+      <item itemvalue="JUnit.UDPClientTest.testStartWithMockConsole" />
       <item itemvalue="JUnit.UDPClientTest.testMain" />
-      <item itemvalue="JUnit.UDPClientTest.testSendPacket" />
       <item itemvalue="JUnit.UDPClientTest.testStart" />
-      <item itemvalue="JUnit.UDPServerTest.testConstructor" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UDPClientTest.testStartWithMockConsole" />
+        <item itemvalue="JUnit.UDPClientTest.testMain" />
+        <item itemvalue="JUnit.UDPClientTest" />
         <item itemvalue="JUnit.UDPClientTest.testStart" />
         <item itemvalue="Application.UDPServer" />
-        <item itemvalue="JUnit.UDPServerTest.testConstructor" />
-        <item itemvalue="JUnit.UDPClientTest.testMain" />
-        <item itemvalue="JUnit.UDPClientTest.testSendPacket" />
       </list>
     </recent_temporary>
   </component>
@@ -258,7 +242,7 @@
       <workItem from="1732115303310" duration="2838000" />
       <workItem from="1732711611013" duration="9853000" />
       <workItem from="1733314203499" duration="803000" />
-      <workItem from="1733518529150" duration="6084000" />
+      <workItem from="1733518529150" duration="6830000" />
     </task>
     <task id="LOCAL-00001" summary="add UDPServer">
       <option name="closed" value="true" />
@@ -524,7 +508,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733532430726</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="update TCP">
+      <option name="closed" value="true" />
+      <created>1733532830527</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1733532830527</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
