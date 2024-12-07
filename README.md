@@ -37,21 +37,13 @@ This project supports both **UDP** and **TCP** communication protocols and is a 
   The `UDPClient` class reads user-inputted text lines from the standard input and transmits them to the server as **UTF-8** encoded datagrams. When launching the client, the address and port of the server are entered as command-line parameters.
 
 - **Key Methods**:
-  - `UDPClient(String hostname, int port)`:  
-    Constructor to initialize the client with the server's hostname and port number.
-
-  - `encodeMessage(String message)`:  
-    Encodes a message into a byte array. If the message exceeds the maximum allowed packet size (e.g., 1500 bytes), it is truncated.
-
-  - `sendPacket(DatagramSocket socket, byte[] message)`:  
-    Sends a UDP datagram containing the provided message to the server using the specified socket.
-
-  - `start()`:  
-    Reads user input from the console, sends it as a UDP datagram to the server, and terminates the session when the user types "exit".
-
-  - `main(String[] args)`:  
-    Entry point for the program. Initializes the client using command-line arguments for the hostname and port, then calls `start()` to begin sending messages.  
-    ava UDPClient localhost 8080
+  - `UDPClient(String hostname, int port)`: Constructor to initialize the client with the server’s hostname and port.
+  - `encodeMessage(String message)`: Encodes the message into a byte array, truncating if necessary.
+  - `sendPacket(DatagramSocket socket, byte[] message)`: Sends the encoded message as a UDP datagram to the server.
+  - `start()`: Reads user input and sends messages to the server until "exit" is typed.
+  - `main(String[] args)`: Allows launching with the command:  
+    ```sh
+    $ java UDPClient localhost 8080
 
 - **Usage**:
   - After starting the UDP server, run the UDP client using the following command:
