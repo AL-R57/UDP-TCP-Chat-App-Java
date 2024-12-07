@@ -7,7 +7,7 @@ import java.net.Socket;
 
 public class TCPServer {
     private String state;
-    private int port;
+    private final int port;
     public static int DEFAULT_PORT = 8080;
 
     public TCPServer(int serv_listening_port) {

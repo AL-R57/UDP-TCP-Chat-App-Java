@@ -2,14 +2,11 @@ package UDP;
 
 import org.junit.jupiter.api.Test;
 
-import static jdk.internal.org.objectweb.asm.util.CheckClassAdapter.verify;
-import static jdk.internal.vm.compiler.word.LocationIdentity.any;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
-import java.io.Console;
-import java.io.IOException;
+import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class UDPClientTest {
 
@@ -34,24 +31,101 @@ class UDPClientTest {
     }
 
 
-    // Test the sendPacket method (mock DatagramSocket)
     @Test
-    void testSendPacket() throws IOException {
+    void testSendPacket() throws Exception {
+        // Start a local server to receive the packet
+        Thread serverThread = new Thread(() -> {
+            try (DatagramSocket serverSocket = new DatagramSocket(8080)) {
+                byte[] buffer = new byte[1500];
+                DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+                serverSocket.receive(packet);
+                String receivedMessage = new String(packet.getData(), 0, packet.getLength());
+                assertEquals("Test Message", receivedMessage);
+            } catch (Exception e) {
+                fail("Server error: " + e.getMessage());
+            }
+        });
+        serverThread.start();
+        // Allow server time to initialize
+        Thread.sleep(1000);
+        // Client sends a packet
         UDPClient client = new UDPClient("localhost", 8080);
-        DatagramSocket mockSocket = mock(DatagramSocket.class);
-
-        byte[] dataToSend = "Test Message".getBytes();
-        client.sendPacket(mockSocket, dataToSend);
-
-        // Verify that the send() method was called on the mock socket
-        verify(mockSocket).send(any());
+        DatagramSocket clientSocket = new DatagramSocket();
+        byte[] message = "Test Message".getBytes();
+        client.sendPacket(clientSocket, message);
+        clientSocket.close();
     }
 
-    // Test for the main method - No need to test deeply, just check execution
     @Test
-    void testMain() {
-        String[] args = {"localhost", "8080"};
-        // We won't assert anything but just ensure that it runs without exception
-        assertDoesNotThrow(() -> UDPClient.main(args));
+    void testStart() throws Exception {
+        // Start a local server to simulate receiving messages
+        Thread serverThread = new Thread(() -> {
+            try (DatagramSocket serverSocket = new DatagramSocket(8080)) {
+                byte[] buffer = new byte[1500];
+                DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+                serverSocket.receive(packet);
+
+                String receivedMessage = new String(packet.getData(), 0, packet.getLength());
+                assertEquals("Hello from Client", receivedMessage);
+            } catch (Exception e) {
+                fail("Server error: " + e.getMessage());
+            }
+        });
+        serverThread.start();
+        // Allow server time to initialize
+        Thread.sleep(1000);
+
+        // Start client
+        Thread clientThread = new Thread(() -> {
+            UDPClient client = new UDPClient("localhost", 8080);
+            try {
+                // Simulate user input using System.setIn
+                String simulatedInput = "Hello from Client\nexit\n";
+                System.setIn(new java.io.ByteArrayInputStream(simulatedInput.getBytes()));
+                client.start();
+            } catch (Exception e) {
+                fail("Client error: " + e.getMessage());
+            }
+        });
+        clientThread.start();
+        // Allow time for communication
+        clientThread.join();
+        serverThread.join();
+    }
+
+    @Test
+    void testMain() throws Exception {
+        // Start a local server
+        Thread serverThread = new Thread(() -> {
+            try (DatagramSocket serverSocket = new DatagramSocket(8080)) {
+                byte[] buffer = new byte[1500];
+                DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+                serverSocket.receive(packet);
+                String receivedMessage = new String(packet.getData(), 0, packet.getLength());
+                assertEquals("Message from Main", receivedMessage);
+            } catch (Exception e) {
+                fail("Server error: " + e.getMessage());
+            }
+        });
+        serverThread.start();
+        // Allow server time to initialize
+        Thread.sleep(1000);
+
+        // Simulate client main
+        Thread clientThread = new Thread(() -> {
+            String[] args = {"localhost", "8080"};
+            try {
+                String simulatedInput = "Message from Main\nexit\n";
+                // Redirect System.in to simulate user input
+                System.setIn(new java.io.ByteArrayInputStream(simulatedInput.getBytes()));
+                UDPClient.main(args);
+            } catch (Exception e) {
+                fail("Client error: " + e.getMessage());
+            }
+        });
+        clientThread.start();
+        // Wait for threads to finish
+        clientThread.join();
+        serverThread.join();
     }
 }

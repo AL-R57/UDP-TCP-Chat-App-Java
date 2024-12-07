@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="448af90b-b369-42ff-be1d-5440b317dc1b" name="Changes" comment="update TCP">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mockito-core-5.4.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TCP/TCPServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TCP/TCPServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UDP/UDPClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UDP/UDPClientTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +42,7 @@
   }
 }]]></component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -57,14 +56,21 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
-    "Application.UDPClient.executor": "Run",
+    "Application.TCPServer.executor": "Run",
+    "Application.UDPClient.executor": "Coverage",
     "Application.UDPServer.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.UDPClientTest.executor": "Run",
+    "JUnit.UDPClientTest.testConstructor.executor": "Run",
+    "JUnit.UDPClientTest.testEncodeMessage.executor": "Run",
+    "JUnit.UDPClientTest.testMain.executor": "Run",
+    "JUnit.UDPClientTest.testSendPacket.executor": "Run",
+    "JUnit.UDPClientTest.testStart.executor": "Run",
+    "JUnit.UDPServerTest.testConstructor.executor": "Coverage",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
@@ -94,17 +100,19 @@
       <recent name="UDP" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.UDPServer">
-    <configuration name="UDPClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.UDPClient">
+    <configuration name="TCPServer" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="TCP.TCPServer" />
+      <module name="UDP-TCP-Chat-App-Java" />
+      <option name="PROGRAM_PARAMETERS" value="10000" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UDPClient" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="UDP.UDPClient" />
       <module name="UDP-TCP-Chat-App-Java" />
       <option name="PROGRAM_PARAMETERS" value="localhost 10000" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="UDP.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -123,14 +131,103 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UDPClientTest.testEncodeMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="UDP-TCP-Chat-App-Java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="UDP.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="UDP" />
+      <option name="MAIN_CLASS_NAME" value="UDP.UDPClientTest" />
+      <option name="METHOD_NAME" value="testEncodeMessage" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UDPClientTest.testMain" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="UDP-TCP-Chat-App-Java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="UDP.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="UDP" />
+      <option name="MAIN_CLASS_NAME" value="UDP.UDPClientTest" />
+      <option name="METHOD_NAME" value="testMain" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UDPClientTest.testSendPacket" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="UDP-TCP-Chat-App-Java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="UDP.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="UDP" />
+      <option name="MAIN_CLASS_NAME" value="UDP.UDPClientTest" />
+      <option name="METHOD_NAME" value="testSendPacket" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UDPClientTest.testStart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="UDP-TCP-Chat-App-Java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="UDP.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="UDP" />
+      <option name="MAIN_CLASS_NAME" value="UDP.UDPClientTest" />
+      <option name="METHOD_NAME" value="testStart" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UDPServerTest.testConstructor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="UDP-TCP-Chat-App-Java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="UDP.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="UDP" />
+      <option name="MAIN_CLASS_NAME" value="UDP.UDPServerTest" />
+      <option name="METHOD_NAME" value="testConstructor" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="Application.UDPServer" />
+      <item itemvalue="Application.TCPServer" />
       <item itemvalue="Application.UDPClient" />
+      <item itemvalue="Application.UDPServer" />
+      <item itemvalue="JUnit.UDPClientTest.testEncodeMessage" />
+      <item itemvalue="JUnit.UDPClientTest.testMain" />
+      <item itemvalue="JUnit.UDPClientTest.testSendPacket" />
+      <item itemvalue="JUnit.UDPClientTest.testStart" />
+      <item itemvalue="JUnit.UDPServerTest.testConstructor" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.UDPServer" />
-        <item itemvalue="Application.UDPClient" />
+        <item itemvalue="JUnit.UDPServerTest.testConstructor" />
+        <item itemvalue="JUnit.UDPClientTest.testMain" />
+        <item itemvalue="JUnit.UDPClientTest.testStart" />
+        <item itemvalue="JUnit.UDPClientTest.testSendPacket" />
       </list>
     </recent_temporary>
   </component>
@@ -162,7 +259,7 @@
       <workItem from="1732115303310" duration="2838000" />
       <workItem from="1732711611013" duration="9853000" />
       <workItem from="1733314203499" duration="803000" />
-      <workItem from="1733518529150" duration="3509000" />
+      <workItem from="1733518529150" duration="5647000" />
     </task>
     <task id="LOCAL-00001" summary="add UDPServer">
       <option name="closed" value="true" />
@@ -412,7 +509,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733518847689</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="update TCP">
+      <option name="closed" value="true" />
+      <created>1733529403232</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1733529403232</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -424,5 +529,14 @@
     <MESSAGE value="add UDPClient rm main" />
     <MESSAGE value="update TCP" />
     <option name="LAST_COMMIT_MESSAGE" value="update TCP" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/UDP_TCP_Chat_App_Java$UDPClient.ic" NAME="UDPClient Coverage Results" MODIFIED="1733532351269" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/UDP_TCP_Chat_App_Java$UDPServer.ic" NAME="UDPServer Coverage Results" MODIFIED="1733532247823" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>UDP.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/UDP_TCP_Chat_App_Java$UDPServerTest_testConstructor.ic" NAME="UDPServerTest.testConstructor Coverage Results" MODIFIED="1733532035911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>UDP.*</FILTER>
+    </SUITE>
   </component>
 </project>
