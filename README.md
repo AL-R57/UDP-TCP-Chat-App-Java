@@ -16,14 +16,16 @@ This project supports both **UDP** and **TCP** communication protocols and is a 
   A server that receives datagrams from clients is represented by the `UDPServer` class. The server anticipates that strings encoded in **UTF-8** will be present in the datagrams. The client's address appears before each received string on the server's standard output. Each message can only be up to 1500 bytes in size. Any data that is larger than this is truncated.
 
 - **Key Methods**:
-  - `UDPServer(int port)`: Constructor to initialize the server with a specified port.
-  - `UDPServer()`: Default constructor with a default port.
-  - `launch()`: Starts the server to listen for client messages.
+  - `UDPServer(int servListeningPort)`: Constructor to initialize the server with a specified port.
+  - `UDPServer()`: Default constructor with a default port (`8080`).
+  - `launch()`: Starts the server, listens for client messages, and handles inactivity timeouts.
+  - `startServer()`: Sets the server state to "Running" and logs it to the console.
+  - `processReceivedPacket(DatagramPacket datagramPacket)`: Processes incoming packets and displays the client’s address and message.
+  - `stopServer(DatagramSocket serverSocket)`: Stops the server, closes the socket, and sets the state to "Close."
   - `main(String[] args)`: Allows launching with the command:  
     ```sh
     $ java UDPServer 8080
-    ```
-
+    
 - **Usage**:  
   Use the `netcat` command in a separate terminal to test:
   ```sh
