@@ -8,8 +8,8 @@ import java.net.Socket;
  * @see TCPServer
  */
 public class TCPClient {
-    private String serverAddress;
-    private int serverPort;
+    private final String serverAddress;
+    private final int serverPort;
 
     /**
      * TCP constructor
