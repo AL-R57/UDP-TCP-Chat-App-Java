@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="448af90b-b369-42ff-be1d-5440b317dc1b" name="Changes" comment="update TCP">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TCP/TCPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TCP/TCPClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,6 +87,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -251,7 +253,7 @@
       <workItem from="1732711611013" duration="9853000" />
       <workItem from="1733314203499" duration="803000" />
       <workItem from="1733518529150" duration="6856000" />
-      <workItem from="1733689478545" duration="6159000" />
+      <workItem from="1733689478545" duration="6681000" />
     </task>
     <task id="LOCAL-00001" summary="add UDPServer">
       <option name="closed" value="true" />
@@ -589,7 +591,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733695956536</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="update TCP">
+      <option name="closed" value="true" />
+      <created>1733695978743</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1733695978743</updated>
+    </task>
+    <task id="LOCAL-00044" summary="update TCP">
+      <option name="closed" value="true" />
+      <created>1733695990440</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1733695990440</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

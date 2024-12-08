@@ -30,6 +30,7 @@ public class TCPClient {
             Console console = getConsole();
             if (console == null) return;
 
+            System.out.println("What is your message? Press Enter to send ('exit' to quit):");
             while (true) {
                 String userInput = readUserInput(console);
                 if ("exit".equalsIgnoreCase(userInput) || userInput == null) {
