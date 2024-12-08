@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="448af90b-b369-42ff-be1d-5440b317dc1b" name="Changes" comment="update TCP">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UDP/UDPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UDP/UDPClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UDP/UDPClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UDP/UDPClientTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,22 +23,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "history": [
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
     {
-      "searchQuery": "src"
+      &quot;searchQuery&quot;: &quot;src&quot;
     }
   ],
-  "lastFilter": {
-    "searchQuery": "src"
+  &quot;lastFilter&quot;: {
+    &quot;searchQuery&quot;: &quot;src&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:AL-R57/UDP-TCP-Chat-App-Java",
-    "accountId": "181f39e2-3a22-4b2d-9d49-3db0442df51d"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:AL-R57/UDP-TCP-Chat-App-Java&quot;,
+    &quot;accountId&quot;: &quot;181f39e2-3a22-4b2d-9d49-3db0442df51d&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -53,43 +51,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.TCPServer.executor": "Run",
-    "Application.UDPClient.executor": "Coverage",
-    "Application.UDPServer.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "JUnit.UDPClientTest.executor": "Run",
-    "JUnit.UDPClientTest.testConstructor.executor": "Run",
-    "JUnit.UDPClientTest.testEncodeMessage.executor": "Run",
-    "JUnit.UDPClientTest.testMain.executor": "Run",
-    "JUnit.UDPClientTest.testSendPacket.executor": "Run",
-    "JUnit.UDPClientTest.testStart.executor": "Run",
-    "JUnit.UDPClientTest.testStartWithMockConsole.executor": "Run",
-    "JUnit.UDPServerTest.testConstructor.executor": "Coverage",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "create.test.in.the.same.root": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/ensea/IdeaProjects/UDP-TCP-Chat-App-Java/mockito-core-5.4.0.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/inves/Desktop/Ensea3A/Java_for_networks/UDP-TCP-Chat-App/src/Main.java",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TCPServer.executor&quot;: &quot;Run&quot;,
+    &quot;Application.UDPClient.executor&quot;: &quot;Coverage&quot;,
+    &quot;Application.UDPServer.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;JUnit.UDPClientTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UDPClientTest.testConstructor.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UDPClientTest.testEncodeMessage.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UDPClientTest.testMain.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UDPClientTest.testSendPacket.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UDPClientTest.testStart.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UDPClientTest.testStartWithMockConsole.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UDPServerTest.testConstructor.executor&quot;: &quot;Coverage&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/ensea/IdeaProjects/UDP-TCP-Chat-App-Java/mockito-core-5.4.0.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/inves/Desktop/Ensea3A/Java_for_networks/UDP-TCP-Chat-App/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -101,7 +99,7 @@
       <recent name="UDP" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UDPClientTest.testStartWithMockConsole">
+  <component name="RunManager" selected="JUnit.UDPClientTest.testMain">
     <configuration name="TCPServer" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="TCP.TCPServer" />
       <module name="UDP-TCP-Chat-App-Java" />
@@ -206,8 +204,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UDPClientTest.testStartWithMockConsole" />
         <item itemvalue="JUnit.UDPClientTest.testMain" />
+        <item itemvalue="JUnit.UDPClientTest.testStartWithMockConsole" />
         <item itemvalue="JUnit.UDPClientTest" />
         <item itemvalue="JUnit.UDPClientTest.testStart" />
         <item itemvalue="Application.UDPServer" />
@@ -242,7 +240,7 @@
       <workItem from="1732115303310" duration="2838000" />
       <workItem from="1732711611013" duration="9853000" />
       <workItem from="1733314203499" duration="803000" />
-      <workItem from="1733518529150" duration="6830000" />
+      <workItem from="1733518529150" duration="6856000" />
     </task>
     <task id="LOCAL-00001" summary="add UDPServer">
       <option name="closed" value="true" />
@@ -516,7 +514,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733532830527</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="update TCP">
+      <option name="closed" value="true" />
+      <created>1733533593401</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1733533593401</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
