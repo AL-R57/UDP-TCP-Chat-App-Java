@@ -5,53 +5,89 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * A TCP server that accepts client connections, receives messages, and echoes them back.
+ * Messages are exchanged in lines of text. Each received message is echoed with the client's IP address.
+ */
 public class TCPServer {
     private String state;
     private final int port;
     public static int DEFAULT_PORT = 8080;
 
-    public TCPServer(int serv_listening_port) {
-        this.port = serv_listening_port;
+    /**
+     * TCPServer constructor
+     * @param servListeningPort port available to listen to UDP Client
+     */
+    public TCPServer(int servListeningPort) {
+        this.port = servListeningPort;
         this.state = "Open";
     }
+
+    /**
+     * TCPServer default constructor
+     */
     public TCPServer() {
         this.port = DEFAULT_PORT;
         this.state = "Open";
     }
 
+    /**
+     * Launches the TCP server, accepts client connections, and processes messages.
+     */
     public void launch() throws IOException {
         ServerSocket serverSocket = null;
         try {
             this.state = "Running";
             serverSocket = new ServerSocket(port);
-            while (true){
-                Socket socket = serverSocket.accept();
-
-                InetAddress clientAddress = socket.getInetAddress();
-                int clientPort = socket.getPort();
-
-                InputStream from_client = socket.getInputStream();
-                OutputStream to_client = socket.getOutputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(from_client));
-                PrintWriter out = new PrintWriter(to_client,true);
-                while(true){
-                    String data_to_print = in.readLine();
-                    if (data_to_print == null){
-                        socket.close();
-                        System.out.println("Client@"+clientAddress+":"+clientPort+" Disconnected");
-                        break;
-                    }
-                    System.out.println("Client@"+clientAddress+":"+clientPort+" - "+data_to_print);
-                    out.println(data_to_print);
-                }
+            System.out.println("Server running on port: " + port);
+            while (true) {
+                Socket clientSocket = acceptClient(serverSocket);
+                processClientConnection(clientSocket);
             }
         } catch (IOException e) {
-            System.err.println("Error in TCP Client: " + e.getMessage());
+            System.err.println("Error in TCP Server: " + e.getMessage());
         } finally {
-            if(serverSocket != null && !serverSocket.isClosed()){
+            closeServer(serverSocket);
+        }
+    }
+
+    private Socket acceptClient(ServerSocket serverSocket) throws IOException {
+        Socket socket = serverSocket.accept();
+        InetAddress clientAddress = socket.getInetAddress();
+        int clientPort = socket.getPort();
+        System.out.println("Client connected: " + clientAddress + ":" + clientPort);
+        return socket;
+    }
+
+    private void processClientConnection(Socket socket) throws IOException {
+        InetAddress clientAddress = socket.getInetAddress();
+        int clientPort = socket.getPort();
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
+            System.out.println("Connected to Client@" + clientAddress + ":" + clientPort);
+
+            // Read and echo messages
+            String message;
+            while ((message = in.readLine()) != null) { //Wait for complete lines
+                System.out.println("Client@" + clientAddress + ":" + clientPort + " - " + message);
+                out.println("Echo: " + message); //Echo the message back to the client
+            }
+        } catch (IOException e) {
+            System.err.println("Error handling client@" + clientAddress + ":" + clientPort + ": " + e.getMessage());
+        } finally {
+            socket.close();
+        }
+    }
+
+    private void closeServer(ServerSocket serverSocket) {
+        try {
+            if (serverSocket != null && !serverSocket.isClosed()) {
                 serverSocket.close();
                 this.state = "Close";
+                System.out.println("Server closed.");
             }
+        } catch (IOException e) {
+            System.err.println("Error closing server socket: " + e.getMessage());
         }
     }
 
@@ -62,15 +98,17 @@ public class TCPServer {
                 ", port=" + port +
                 '}';
     }
-    public static void main(String[] args) throws IOException {
 
+    /**
+     * Main method to start the TCP server. If no port is provided via command-line arguments, the server will use the default port (8080).
+     */
+public static void main(String[] args) throws IOException {
         int server_port;
         if (args.length < 1) {
             server_port = TCP.TCPServer.DEFAULT_PORT;
         } else{
             server_port = Integer.parseInt(args[0]);
         }
-
         TCP.TCPServer tcpServer = new TCP.TCPServer(server_port);
         tcpServer.launch();
     }
