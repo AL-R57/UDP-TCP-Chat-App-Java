@@ -149,6 +149,5 @@ After connecting to the TCP server, the TCP client transmits messages and shows 
 
 - Test for TCPServer
 - Test for TCPClient
-- .jar files
 - Fix UDPClientTest with mockito file
 - TCPMultiServer
