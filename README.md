@@ -121,10 +121,9 @@ After connecting to the TCP server, the TCP client transmits messages and shows 
   - `createOutputStream()`: To communicate data to the server, a `PrintWriter` is created.
   - `getConsole()`: retrieves the `Console` so that user input may be read.
   - `readUserInput()`: takes in a line of user input.
-  - 'shouldExit()': Verifies whether the user entered "exit" or `<CTRL+D>`.
-  - `sendMessageToServer()`: Sends the user’s message to the server.
-  - `receiveMessageFromServer()`: Reads the server’s response.
-  - `printServerResponse()`: Prints the server’s response to the console.
+  - `sendMessageToServer()`: transmits the message from the user to the server.
+  - `receiveMessageFromServer()`: reads the response from the server.
+  - `printServerResponse()`: prints the response from the server to the terminal.
 
 - **Command to run**:
     ```sh
