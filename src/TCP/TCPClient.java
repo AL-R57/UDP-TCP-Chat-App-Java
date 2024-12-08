@@ -2,8 +2,6 @@ package TCP;
 
 import java.io.*;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 
 /**
  * TCPClient connects to a TCPServer and exchanges messages.
@@ -12,8 +10,10 @@ import java.util.Arrays;
 public class TCPClient {
     private String serverAddress;
     private int serverPort;
-    private static final int MAX_PACKET_SIZE = 1500; //MTU value for ethernet
 
+    /**
+     * TCP constructor
+     */
     public TCPClient(String serverAddress, int serverPort) {
         this.serverAddress = serverAddress;
         this.serverPort = serverPort;
@@ -23,39 +23,81 @@ public class TCPClient {
      * Starts the client, allowing the user to send messages to the server and receive echoes.
      */
     public void start() {
-        try (Socket clientSocket = new Socket(serverAddress, serverPort);
-             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)) {
-            Console console = System.console();
-            if (console == null) {
-                System.err.println("No console available.");
-                return;
-            }
-            System.out.println("What is your message? Press Enter to send ('exit' to quit):");
+        try (Socket clientSocket = createSocket();
+             BufferedReader in = createInputStream(clientSocket);
+             PrintWriter out = createOutputStream(clientSocket)) {
+
+            Console console = getConsole();
+            if (console == null) return;
+
             while (true) {
-                String userInput = console.readLine();
+                String userInput = readUserInput(console);
                 if ("exit".equalsIgnoreCase(userInput) || userInput == null) {
                     System.out.println("Exiting client.");
                     break;
                 }
-                byte[] dataToSend = userInput.getBytes(StandardCharsets.UTF_8);
-                if (dataToSend.length > MAX_PACKET_SIZE) {
-                    System.out.println("Message too long. It has been truncated to " + MAX_PACKET_SIZE + " bytes.");
-                    userInput = new String(dataToSend, 0, MAX_PACKET_SIZE, StandardCharsets.UTF_8);
-                }
-
-                // Send message to the server
-                out.println(userInput);
-                System.out.println("Message sent to " + serverAddress + ":" + serverPort);
-
-                // Receive response from the server
-                String response = in.readLine();
-                if (response != null) {
-                    System.out.println("Received from " + serverAddress + ":" + serverPort + " - " + response);
-                }
+                sendMessageToServer(out, userInput);
+                String response = receiveMessageFromServer(in);
+                printServerResponse(response);
             }
         } catch (IOException e) {
             System.err.println("Error in TCP Client: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Initializes a socket connection to the server.
+     */
+    private Socket createSocket() throws IOException {
+        System.out.println("Connecting to server at " + serverAddress + ":" + serverPort);
+        return new Socket(serverAddress, serverPort);
+    }
+
+    /**
+     * Returns the console object for reading user input.
+     */
+    private Console getConsole() {
+        Console console = System.console();
+        if (console == null) {
+            System.err.println("No console available.");
+        }
+        return console;
+    }
+
+    private BufferedReader createInputStream(Socket clientSocket) throws IOException {
+        return new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+    }
+    private PrintWriter createOutputStream(Socket clientSocket) throws IOException {
+        return new PrintWriter(clientSocket.getOutputStream(), true);
+    }
+
+    /**
+     * Reads user input from the console.
+     */
+    private String readUserInput(Console console) {
+        return console.readLine();
+    }
+
+    private void sendMessageToServer(PrintWriter out, String message) {
+        out.println(message);
+        System.out.println("Message sent to " + serverAddress + ":" + serverPort);
+    }
+
+    private String receiveMessageFromServer(BufferedReader in) {
+        try {
+            return in.readLine();
+        } catch (IOException e) {
+            System.err.println("Error receiving message from server: " + e.getMessage());
+            return null;
+        }
+    }
+
+    /**
+     * Prints the server's response in the client terminal.
+     */
+    private void printServerResponse(String response) {
+        if (response != null) {
+            System.out.println("Received from " + serverAddress + ":" + serverPort + " - " + response);
         }
     }
 

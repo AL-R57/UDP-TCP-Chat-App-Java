@@ -252,7 +252,7 @@
       <workItem from="1732711611013" duration="9853000" />
       <workItem from="1733314203499" duration="803000" />
       <workItem from="1733518529150" duration="6856000" />
-      <workItem from="1733689478545" duration="4397000" />
+      <workItem from="1733689478545" duration="5655000" />
     </task>
     <task id="LOCAL-00001" summary="add UDPServer">
       <option name="closed" value="true" />
@@ -566,7 +566,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733693746035</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="update TCP">
+      <option name="closed" value="true" />
+      <created>1733694193295</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1733694193295</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -587,5 +595,7 @@
     <SUITE FILE_PATH="coverage/UDP_TCP_Chat_App_Java$UDPServerTest_testConstructor.ic" NAME="UDPServerTest.testConstructor Coverage Results" MODIFIED="1733532035911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>UDP.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/UDP_TCP_Chat_App_Java$TCPClient.ic" NAME="TCPClient Coverage Results" MODIFIED="1733694260233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/UDP_TCP_Chat_App_Java$TCPServer.ic" NAME="TCPServer Coverage Results" MODIFIED="1733694296224" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>
