@@ -81,11 +81,16 @@ This project supports both **UDP** and **TCP** communication protocols and is a 
 
 After connecting to a client, the TCP server receives messages and relays them back to the client, prefixing them with the IP address of the client.
 
-- **Key Methods**: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  - `launch()`: 
-    - Creates a `ServerSocket` to listen for incoming connections.
-    - Accepts a client connection using the `accept()` method.
-    - Reads data from the client and sends an echo response.
+- **Key Methods**:
+  - `TCPServer(int servListeningPort)`: Constructor to initialize the server with a specified port.
+  - `TCPServer()`: Default constructor with a default port (`8080`).
+  - `launch()`: Starts the server, accepts client connections, and handles message exchange.
+  - `acceptClient(ServerSocket serverSocket)`: Accepts a client connection and logs the client’s address and port.
+  - `processClientConnection(Socket socket)`: Handles communication with a connected client, echoes received messages, and disconnects when the client stops sending data.
+  - `closeServer(ServerSocket serverSocket)`: Closes the server socket and updates the server state to "Close."
+  - `main(String[] args)`: Allows launching with the command:  
+    ```sh
+    $ java TCPServer 8080
 
 - **Command to run**:
     ```sh
@@ -135,15 +140,8 @@ After connecting to the TCP server, the TCP client transmits messages and shows 
 
 
 
-
-
-
-
-
-
-
 todo:
--finish readme for keymethods  TCPServer TCPClient
--separation TCPServer TCPClient
+-finish readme for keymethods TCPClient
+-separation TCPClient
 -test codes
 -javadoc
