@@ -34,7 +34,7 @@ public class TCPClient {
             System.out.println("What is your message? Press Enter to send ('exit' to quit):");
             while (true) {
                 String userInput = console.readLine();
-                if ("exit".equalsIgnoreCase(userInput)) {
+                if ("exit".equalsIgnoreCase(userInput) || userInput == null) {
                     System.out.println("Exiting client.");
                     break;
                 }
