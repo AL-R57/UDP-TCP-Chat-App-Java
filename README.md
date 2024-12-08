@@ -31,6 +31,9 @@ This project supports both **UDP** and **TCP** communication protocols and is a 
   ```sh
   $ nc -u localhost 8080
 
+- **UDPServerTest**:
+  - All tests passed
+
 #### 1.2 UDP Client (`UDPClient.java`)
 
 - **Definition**:
@@ -62,6 +65,10 @@ This project supports both **UDP** and **TCP** communication protocols and is a 
 
 - **Exiting**:
   - Type `exit` to terminate the client.
+
+- **UDPClientTest**:
+  - Doesn't work yet because of console interations
+  - Need to be fixed to test the methods `start()` and `main(String[] args)`
 
 ---
 
