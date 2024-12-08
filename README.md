@@ -117,11 +117,11 @@ After connecting to the TCP server, the TCP client transmits messages and shows 
 - **Key Methods**: !!!!!!!!!!!!!!!!!!!!!
   - `start()`: synchronizes data transmission, response, input reading, and exit condition checks. assigns work to assistant techniques.
   - `createSocket()`: connects to the server via a socket connection.
-  - `createInputStream()`: Creates a `BufferedReader` to read data from the server.
-  - `createOutputStream()`: Creates a `PrintWriter` to send data to the server.
-  - `getConsole()`: Retrieves the `Console` for reading user input.
-  - `readUserInput()`: Reads a line of input from the user.
-  - `shouldExit()`: Checks if the user input is "exit" or `<CTRL+D>`.
+  - `createInputStream()`: To read data from the server, a `BufferedReader` is created.
+  - `createOutputStream()`: To communicate data to the server, a `PrintWriter` is created.
+  - `getConsole()`: retrieves the `Console` so that user input may be read.
+  - `readUserInput()`: takes in a line of user input.
+  - 'shouldExit()': Verifies whether the user entered "exit" or `<CTRL+D>`.
   - `sendMessageToServer()`: Sends the user’s message to the server.
   - `receiveMessageFromServer()`: Reads the server’s response.
   - `printServerResponse()`: Prints the server’s response to the console.
