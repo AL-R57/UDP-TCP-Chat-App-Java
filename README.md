@@ -142,3 +142,12 @@ After connecting to the TCP server, the TCP client transmits messages and shows 
 
 - **Exiting**:
   - Use `<CTRL> + D` to end the input and close the client connection.
+
+---
+
+#### TO BE DONE
+
+- Test for TCPServer
+- Test for TCPClient
+- .jar files
+- Fix UDPClientTest with mockito file
