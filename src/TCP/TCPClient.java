@@ -23,7 +23,9 @@ public class TCPClient {
      * Starts the client, allowing the user to send messages to the server and receive echoes.
      */
     public void start() {
-        try (Socket clientSocket = new Socket(serverAddress,serverPort)) {
+        try (Socket clientSocket = new Socket(serverAddress, serverPort);
+             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)) {
             Console console = System.console();
             if (console == null) {
                 System.err.println("No console available.");
@@ -36,22 +38,21 @@ public class TCPClient {
                     System.out.println("Exiting client.");
                     break;
                 }
-                byte[] data_to_send = userInput.getBytes(StandardCharsets.UTF_8);
-                if (data_to_send.length > MAX_PACKET_SIZE) {
-                    System.out.println("Message too long. It has been truncated to "+MAX_PACKET_SIZE+" bytes.");
-                    data_to_send = new byte[MAX_PACKET_SIZE];
-                    System.arraycopy(userInput.getBytes(StandardCharsets.UTF_8), 0, data_to_send, 0, MAX_PACKET_SIZE);
+                byte[] dataToSend = userInput.getBytes(StandardCharsets.UTF_8);
+                if (dataToSend.length > MAX_PACKET_SIZE) {
+                    System.out.println("Message too long. It has been truncated to " + MAX_PACKET_SIZE + " bytes.");
+                    userInput = new String(dataToSend, 0, MAX_PACKET_SIZE, StandardCharsets.UTF_8);
                 }
 
-                InputStream data_client = clientSocket.getInputStream();
-                OutputStream data_server = clientSocket.getOutputStream();
-                BufferedInputStream in = new BufferedInputStream(data_client);
-                PrintWriter out = new PrintWriter(data_server);
+                // Send message to the server
+                out.println(userInput);
                 System.out.println("Message sent to " + serverAddress + ":" + serverPort);
-                //while connection établi lecture écriture
-                System.out.println("Received from "+serverAddress+":"+serverPort+" - "+in+"\n");
-                out.println(Arrays.toString(data_to_send));
 
+                // Receive response from the server
+                String response = in.readLine();
+                if (response != null) {
+                    System.out.println("Received from " + serverAddress + ":" + serverPort + " - " + response);
+                }
             }
         } catch (IOException e) {
             System.err.println("Error in TCP Client: " + e.getMessage());

@@ -68,20 +68,23 @@ public class TCPServer {
     private void processClientConnection(Socket socket) throws IOException {
         InetAddress clientAddress = socket.getInetAddress();
         int clientPort = socket.getPort();
+
         try (BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
+
             System.out.println("Connected to Client@" + clientAddress + ":" + clientPort);
 
-            // Read and echo messages
             String message;
-            while ((message = in.readLine()) != null) { //Wait for complete lines
+            while ((message = in.readLine()) != null) {
                 System.out.println("Client@" + clientAddress + ":" + clientPort + " - " + message);
-                out.println("Echo: " + message); //Echo the message back to the client
+                out.println("Echo: " + message); // Echo the message back to the client
             }
+            System.out.println("Client@" + clientAddress + ":" + clientPort + " Disconnected");
         } catch (IOException e) {
             System.err.println("Error handling client@" + clientAddress + ":" + clientPort + ": " + e.getMessage());
         } finally {
             socket.close();
+            System.out.println("Socket closed for Client@" + clientAddress + ":" + clientPort);
         }
     }
 
