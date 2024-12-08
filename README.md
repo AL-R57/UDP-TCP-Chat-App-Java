@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project is a **Java-based Client-Server Chat Application** that supports the **UDP** and **TCP** communication protocols. The objective is to demonstrate how to create a simple chat program that uses Java sockets to handle client requests and server responses. The project also uses multi-threading to handle many TCP connections simultaneously.
+This project supports both **UDP** and **TCP** communication protocols and is a **Java-based Client-Server Chat Application**. The goal is to show how to build a basic chat application that can manage client requests and server responses using Java sockets. In order to manage several TCP connections at once, the project also incorporates multi-threading.
 
 ---
 
