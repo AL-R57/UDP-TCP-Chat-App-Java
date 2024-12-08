@@ -114,17 +114,16 @@ After connecting to a client, the TCP server receives messages and relays them b
 
 After connecting to the TCP server, the TCP client transmits messages and shows the server's echoed answers.
 
-- **Key Methods**: !!!!!!!!!!!!!!!!!!!!!
+- **Key Methods**:
   - `start()`: synchronizes data transmission, response, input reading, and exit condition checks. assigns work to assistant techniques.
   - `createSocket()`: connects to the server via a socket connection.
-  - `createInputStream()`: Creates a `BufferedReader` to read data from the server.
-  - `createOutputStream()`: Creates a `PrintWriter` to send data to the server.
-  - `getConsole()`: Retrieves the `Console` for reading user input.
-  - `readUserInput()`: Reads a line of input from the user.
-  - `shouldExit()`: Checks if the user input is "exit" or `<CTRL+D>`.
-  - `sendMessageToServer()`: Sends the user’s message to the server.
-  - `receiveMessageFromServer()`: Reads the server’s response.
-  - `printServerResponse()`: Prints the server’s response to the console.
+  - `createInputStream()`: To read data from the server, a `BufferedReader` is created.
+  - `createOutputStream()`: To communicate data to the server, a `PrintWriter` is created.
+  - `getConsole()`: retrieves the `Console` so that user input may be read.
+  - `readUserInput()`: takes in a line of user input.
+  - `sendMessageToServer()`: transmits the message from the user to the server.
+  - `receiveMessageFromServer()`: reads the response from the server.
+  - `printServerResponse()`: prints the response from the server to the terminal.
 
 - **Command to run**:
     ```sh
@@ -143,3 +142,12 @@ After connecting to the TCP server, the TCP client transmits messages and shows 
 
 - **Exiting**:
   - Use `<CTRL> + D` to end the input and close the client connection.
+
+---
+
+#### TO BE DONE
+
+- Test for TCPServer
+- Test for TCPClient
+- Fix UDPClientTest with mockito file
+- TCPMultiServer
