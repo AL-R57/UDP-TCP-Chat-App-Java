@@ -114,7 +114,7 @@ After connecting to a client, the TCP server receives messages and relays them b
 
 After connecting to the TCP server, the TCP client transmits messages and shows the server's echoed answers.
 
-- **Key Methods**: !!!!!!!!!!!!!!!!!!!!!
+- **Key Methods**:
   - `start()`: synchronizes data transmission, response, input reading, and exit condition checks. assigns work to assistant techniques.
   - `createSocket()`: connects to the server via a socket connection.
   - `createInputStream()`: To read data from the server, a `BufferedReader` is created.
