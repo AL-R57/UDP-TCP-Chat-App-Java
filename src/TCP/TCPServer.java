@@ -51,6 +51,9 @@ public class TCPServer {
         }
     }
 
+    /**
+     * Wait for Client connection
+     */
     private Socket acceptClient(ServerSocket serverSocket) throws IOException {
         Socket socket = serverSocket.accept();
         InetAddress clientAddress = socket.getInetAddress();
@@ -59,6 +62,9 @@ public class TCPServer {
         return socket;
     }
 
+    /**
+     * Process the client connection
+     */
     private void processClientConnection(Socket socket) throws IOException {
         InetAddress clientAddress = socket.getInetAddress();
         int clientPort = socket.getPort();
@@ -79,6 +85,9 @@ public class TCPServer {
         }
     }
 
+    /**
+     * Close the server
+     */
     private void closeServer(ServerSocket serverSocket) {
         try {
             if (serverSocket != null && !serverSocket.isClosed()) {
@@ -102,14 +111,14 @@ public class TCPServer {
     /**
      * Main method to start the TCP server. If no port is provided via command-line arguments, the server will use the default port (8080).
      */
-public static void main(String[] args) throws IOException {
-        int server_port;
-        if (args.length < 1) {
-            server_port = TCP.TCPServer.DEFAULT_PORT;
-        } else{
-            server_port = Integer.parseInt(args[0]);
-        }
-        TCP.TCPServer tcpServer = new TCP.TCPServer(server_port);
-        tcpServer.launch();
+    public static void main(String[] args) throws IOException {
+            int server_port;
+            if (args.length < 1) {
+                server_port = TCP.TCPServer.DEFAULT_PORT;
+            } else{
+                server_port = Integer.parseInt(args[0]);
+            }
+            TCP.TCPServer tcpServer = new TCP.TCPServer(server_port);
+            tcpServer.launch();
     }
 }
